@@ -42,30 +42,6 @@ function About({ match }) {
   )
 }
 
-function Topic({ match }) {
-  return (
-    <>
-      <ul>
-        <li>
-          <Link to={`${match.url}/111`}>111</Link>
-
-          <Route path={`${match.path}/111`} component={LinkList} />
-        </li>
-        <li>
-          <Link to={`${match.url}/222`}>222</Link>
-
-          <Route path={`${match.path}/222`} component={LinkList2} />
-        </li>
-        <li>
-          <Link to={`${match.url}/333`}>333</Link>
-
-          <Route path={`${match.path}/333`} component={LinkList3} />
-        </li>
-      </ul>
-    </>
-  )
-}
-
 function Topics({ match }) {
   return (
     <>
