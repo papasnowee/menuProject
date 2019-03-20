@@ -1,13 +1,11 @@
 import React from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
 import routes from './router'
-console.log(routes)
 class App extends React.Component {
   get getRoutes() {
     const _routes = []
 
     function getRoute(routes) {
-      console.log(routes)
       routes.forEach(({ path, component, routes = null }) => {
         _routes.push(<Route path={path} component={component} />)
         if (routes) getRoute(routes)
@@ -19,25 +17,22 @@ class App extends React.Component {
   }
 
   get $renderMenu() {
-    const menuBuilder = menuItem => {}
-
-    routes.forEach(menuBuilder)
+    function menuBuilder(routes) {
+      const menuItem = []
+      routes.forEach(({ path, component, label, routes = null }) => {
+        menuItem.push(
+          <li className="menu__item">
+            <Link to={path}>{label[0] + label.slice(1)}</Link>
+            {routes ? <ul>{menuBuilder(routes)}</ul> : null}
+          </li>
+        )
+      })
+      return menuItem
+    }
 
     return (
       <nav>
-        <ul className="menu">
-          <li className="menu__item">
-            <Link to="/">Главная</Link>
-          </li>
-          <li className="menu__item">
-            <Link to="/about">О нас</Link>
-            <ul>
-              <li className="menu__item">
-                <Link to="/contacts">Контакты</Link>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <ul className="menu">{menuBuilder(routes)}</ul>
       </nav>
     )
   }
