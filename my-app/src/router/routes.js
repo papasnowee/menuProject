@@ -13,7 +13,7 @@ const routes = [
         id: uuid(),
         label: 'контакты',
         component: Contacts,
-        path: '/Contacts',
+        path: '/contacts',
       },
     ],
   },
