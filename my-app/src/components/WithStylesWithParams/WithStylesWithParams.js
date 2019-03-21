@@ -1,7 +1,5 @@
 import React from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
-import routes from './router'
-import withStylesWithParams from './components/WithStylesWithParams'
+import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -9,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 
-function withStyleWithMyOptions(options) {
+function menu(options) {
   const styles = theme => ({
     root: {
       width: '100%',
@@ -17,6 +15,13 @@ function withStyleWithMyOptions(options) {
       backgroundColor: theme.palette.background.paper,
     },
   })
+
+  // const options = [
+  //   'Show some love to Material-UI',
+  //   'Show all notification content',
+  //   'Hide sensitive notification content',
+  //   'Hide all notification content',
+  // ]
 
   class SimpleListMenu extends React.Component {
     state = {
@@ -77,58 +82,8 @@ function withStyleWithMyOptions(options) {
       )
     }
   }
-  return withStyles(styles)(SimpleListMenu)
 }
 
-class App extends React.Component {
-  get getRoutes() {
-    const _routes = []
+// withStyles(styles)(SimpleListMenu)
 
-    function getRoute(routes) {
-      routes.forEach(({ path, component, routes = null }) => {
-        _routes.push(<Route path={path} component={component} />)
-        if (routes) getRoute(routes)
-      })
-    }
-    getRoute(routes)
-
-    return _routes
-  }
-
-  get $renderMenu() {
-    function menuBuilder(routes) {
-      const menuItem = []
-
-      routes.forEach(({ path, component, label, routes = null }) => {
-        if (routes) {
-          const options = [
-            <li className="menu__item">
-              <Link to={path}>{label}</Link>
-              {routes ? <ul>{menuBuilder(routes)}</ul> : null}
-            </li>,
-          ]
-          const WithStylesWithParams = withStyleWithMyOptions(options)
-          menuItem.push(WithStylesWithParams)
-        }
-      })
-      return menuItem
-    }
-
-    return (
-      <nav>
-        <ul className="menu">{menuBuilder(routes)}</ul>
-      </nav>
-    )
-  }
-
-  render() {
-    return (
-      <>
-        <ul>{this.$renderMenu}</ul>
-        <Switch>{this.getRoutes}</Switch>
-      </>
-    )
-  }
-}
-
-export default App
+export default menu
