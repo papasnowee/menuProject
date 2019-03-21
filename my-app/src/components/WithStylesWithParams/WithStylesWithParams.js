@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -82,8 +82,7 @@ function menu(options) {
       )
     }
   }
+  return withStyles(styles)(SimpleListMenu)
 }
-
-// withStyles(styles)(SimpleListMenu)
 
 export default menu
