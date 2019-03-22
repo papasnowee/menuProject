@@ -2,14 +2,8 @@ import React from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
 import routes from './router'
 import { fromJS } from 'immutable'
-import MenuComponent from './components/MenuComponent'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleSlideToggle = this.handleSlideToggle.bind(this)
-  }
-
   state = {
     menu: fromJS({}),
     inited: false,
@@ -53,14 +47,36 @@ class App extends React.Component {
     this.setState({ anchorEl: event.currentTarget })
   }
 
+  get $renderMenu() {
+    const { menu } = this.state
+
+    const menuBuilder = routes =>
+      routes.map(({ id, path, label, routes = null }) => (
+        <li className="menu__item" key={id}>
+          <Link to={path}>{label}</Link>
+          {routes ? (
+            <>
+              <button type="button" onClick={this.handleSlideToggle(id)}>
+                {menu.get(id) ? '-' : '+'}
+              </button>
+              <ul style={{ display: `${menu.get(id) ? 'block' : 'none'}` }}>
+                {menuBuilder(routes)}
+              </ul>
+            </>
+          ) : null}
+        </li>
+      ))
+
+    return (
+      <nav>
+        <ul>{menuBuilder(routes)}</ul>
+      </nav>
+    )
+  }
+
   render() {
     return (
       <>
-        <MenuComponent
-          routes={routes}
-          handleSlideToggle={this.handleSlideToggle}
-          menu={this.state.menu}
-        />
         {this.$renderMenu}
         <Switch>{this.getRoutes}</Switch>
       </>
