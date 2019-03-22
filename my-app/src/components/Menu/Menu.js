@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function MenuComponent({ routes, handleSlideToggle, menu }) {
+function Menu({ routes, handleSlideToggle, menu }) {
   const menuBuilder = routes =>
     routes.map(({ id, path, label, routes = null }) => (
       <li className="menu__item" key={id}>
@@ -25,4 +25,4 @@ function MenuComponent({ routes, handleSlideToggle, menu }) {
     </nav>
   )
 }
-export default MenuComponent
+export default Menu

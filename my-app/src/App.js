@@ -1,9 +1,26 @@
 import React from 'react'
-import HomePageComponent from './components/HomePageComponent'
+import HomePage from './pages/HomePage'
+import Login from './components/forms/Login'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isAuth: false,
+    }
+
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  handleLogin() {
+    this.setState({ isAuth: true })
+  }
+
   render() {
-    return <HomePageComponent />
+    const { isAuth } = this.state
+
+    return isAuth ? <HomePage /> : <Login onLogin={this.handleLogin} />
   }
 }
 

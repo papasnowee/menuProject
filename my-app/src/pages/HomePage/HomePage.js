@@ -2,9 +2,9 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import routes from '../../router'
 import { fromJS } from 'immutable'
-import MenuComponent from '../MenuComponent'
+import MenuComponent from '../../components/Menu'
 
-class HomePageComponent extends React.Component {
+class HomePage extends React.Component {
   constructor(props) {
     super(props)
     this.handleSlideToggle = this.handleSlideToggle.bind(this)
@@ -68,4 +68,4 @@ class HomePageComponent extends React.Component {
   }
 }
 
-export default HomePageComponent
+export default HomePage
