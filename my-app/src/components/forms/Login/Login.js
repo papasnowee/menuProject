@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Paper, TextField, Button } from '@material-ui/core'
+import './Login.css'
 
 /**
  * TODO: 1) перенести стили из JSX в файл стилей
@@ -52,23 +53,8 @@ export default class Login extends PureComponent {
     }
 
     return (
-      <div
-        style={{
-          width: '100vw',
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Paper
-          style={{
-            width: 300,
-            height: 220,
-            padding: 30,
-            margin: 'auto',
-          }}
-        >
+      <div className="login-form">
+        <Paper className="login-form__paper">
           <form onSubmit={this.handleSubmit}>
             <TextField
               type="text"
@@ -84,12 +70,7 @@ export default class Login extends PureComponent {
               value={password}
               {...textFieldProps}
             />
-            <div
-              style={{
-                marginTop: 25,
-                textAlign: 'right',
-              }}
-            >
+            <div className="login-form__button">
               <Button type="submit" color="primary" variant="contained">
                 Sing in
               </Button>

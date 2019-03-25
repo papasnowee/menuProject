@@ -1,0 +1,19 @@
+.login-form {
+        width: 100vw;
+        height: 100vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center ;     
+}
+
+.login-form__paper{
+    width: 300px;
+    height: 220px;
+    padding: 30px;
+    margin: auto;
+}
+
+.login-form__button {
+    margin-top: 25px;
+    text-align: right;
+}
