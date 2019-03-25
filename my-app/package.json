@@ -10,6 +10,7 @@
     "react-dom": "^16.8.4",
     "react-router-dom": "^4.4.0",
     "react-scripts": "2.1.8",
+    "react-select": "^2.4.2",
     "react-slide-toggle": "^0.2.3",
     "uuid": "^3.3.2"
   },

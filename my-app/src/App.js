@@ -24,5 +24,3 @@ class App extends React.Component {
 }
 
 export default App
-
-// return isAuth ? <HomePage /> : <Login onLogin={this.handleLogin} />

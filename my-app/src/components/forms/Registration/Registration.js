@@ -5,6 +5,7 @@ import './Registration.css'
 import Radio from '@material-ui/core/Radio'
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
+import CountrySelect from './CountrySelect'
 /**
  * TODO: 1) перенести стили из JSX в файл стилей
  * TODO: 2) добивить табы: первый таб форма логина, второй регистрация
@@ -17,11 +18,14 @@ export default class Registration extends PureComponent {
     this.state = {
       login: '',
       password: '',
+      passwordAgain: '',
+      gender: '',
+      email: '',
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleGenderSelect = this.handleGenderSelect.bind(this)
+    this.handleChangeGender = this.handleChangeGender.bind(this)
   }
 
   static propTypes = {
@@ -45,12 +49,12 @@ export default class Registration extends PureComponent {
     }
   }
 
-  handleGenderSelect({ target: { value } }) {
-    this.setState({ RadioValue: value })
+  handleChangeGender({ target: { value } }) {
+    this.setState({ gender: value })
   }
 
   render() {
-    const { password, login, passwordAgain, email } = this.state
+    const { password, login, passwordAgain, email, gender } = this.state
 
     const textFieldProps = {
       onChange: this.handleChange,
@@ -93,28 +97,29 @@ export default class Registration extends PureComponent {
             />
             <div>
               Пол
-              <div onClick={this.handleGenderSelect}>
+              <div className="registration__row">
                 <Radio
-                  checked={this.state.RadioValue === 'male'}
-                  onChange={this.handleChange}
+                  checked={gender === 'male'}
+                  onChange={this.handleChangeGender}
                   value="male"
-                  name="radio-button-demo"
-                  aria-label="A"
+                  name="gender"
+                  id="male"
                 />
-                <span>Мужской</span>
+                <label htmlFor="male">Мужской</label>
               </div>
-              <div onClick={this.handleGenderSelect}>
+              <div className="registration__row">
                 <Radio
-                  checked={this.state.RadioValue === 'female'}
-                  onChange={this.handleChange}
+                  checked={gender === 'female'}
+                  onChange={this.handleChangeGender}
                   value="female"
-                  name="radio-button-demo"
-                  aria-label="B"
+                  name="gender"
+                  id="female"
                 />
-                <span>Женский</span>
+                <label htmlFor="female">Женский</label>
               </div>
             </div>
             <div className="auth-form__button">
+              <CountrySelect />
               <Button type="submit" color="primary" variant="contained">
                 Зарегистрироваться
               </Button>
