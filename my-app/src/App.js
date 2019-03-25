@@ -1,7 +1,7 @@
 import React from 'react'
 import HomePage from './pages/HomePage'
 import Login from './components/forms/Login'
-
+import Tabs from './pages/Tabs'
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -20,8 +20,10 @@ class App extends React.Component {
   render() {
     const { isAuth } = this.state
 
-    return isAuth ? <HomePage /> : <Login onLogin={this.handleLogin} />
+    return isAuth ? <HomePage /> : <Tabs />
   }
 }
 
 export default App
+
+// return isAuth ? <HomePage /> : <Login onLogin={this.handleLogin} />
