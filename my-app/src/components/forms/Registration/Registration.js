@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Paper, TextField, Button } from '@material-ui/core'
 import './Registration.css'
-import Checkbox from '@material-ui/core/Checkbox'
-
+import Radio from '@material-ui/core/Radio'
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
+import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
 /**
  * TODO: 1) перенести стили из JSX в файл стилей
  * TODO: 2) добивить табы: первый таб форма логина, второй регистрация
@@ -20,6 +21,7 @@ export default class Registration extends PureComponent {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleGenderSelect = this.handleGenderSelect.bind(this)
   }
 
   static propTypes = {
@@ -41,6 +43,10 @@ export default class Registration extends PureComponent {
     if (getIsNotEmpty(login) && getIsNotEmpty(password)) {
       onLogin({ login, password })
     }
+  }
+
+  handleGenderSelect({ target: { value } }) {
+    this.setState({ RadioValue: value })
   }
 
   render() {
@@ -85,9 +91,32 @@ export default class Registration extends PureComponent {
               value={email}
               {...textFieldProps}
             />
+            <div>
+              Пол
+              <div onClick={this.handleGenderSelect}>
+                <Radio
+                  checked={this.state.RadioValue === 'male'}
+                  onChange={this.handleChange}
+                  value="male"
+                  name="radio-button-demo"
+                  aria-label="A"
+                />
+                <span>Мужской</span>
+              </div>
+              <div onClick={this.handleGenderSelect}>
+                <Radio
+                  checked={this.state.RadioValue === 'female'}
+                  onChange={this.handleChange}
+                  value="female"
+                  name="radio-button-demo"
+                  aria-label="B"
+                />
+                <span>Женский</span>
+              </div>
+            </div>
             <div className="auth-form__button">
               <Button type="submit" color="primary" variant="contained">
-                Sing in
+                Зарегистрироваться
               </Button>
             </div>
           </form>
