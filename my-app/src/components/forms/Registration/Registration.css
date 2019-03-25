@@ -1,0 +1,21 @@
+.auth-form {
+    width: 100vw;
+    height: 100vh; 
+    display: flex;
+    /* flex-direction: row; */
+    /* justify-content: center;
+    align-items: center ;      */
+}
+
+.auth-form__paper{
+/* left: 0px; */
+width: 300px;
+height: 370px;
+padding: 30px;
+margin: auto;
+}
+
+.auth-form__button {
+margin-top: 25px;
+text-align: right;
+}

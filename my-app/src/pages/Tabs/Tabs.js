@@ -5,7 +5,8 @@ import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
-import Login from '../../components/forms//Login'
+import Login from '../../components/forms/Login'
+import Registration from '../../components/forms/Registration'
 
 function TabContainer(props) {
   return (
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function SimpleTabs() {
+function SimpleTabs({ onLogin }) {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
@@ -38,18 +39,20 @@ function SimpleTabs() {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
+          <Tab label="Войти" />
+          <Tab label="Зарегистрироваться" />
         </Tabs>
       </AppBar>
       {value === 0 && (
         <TabContainer>
-          <Login />
+          <Login onLogin={onLogin} />
         </TabContainer>
       )}
-      {value === 1 && <TabContainer>Item Two</TabContainer>}
-      {value === 2 && <TabContainer>Item Three</TabContainer>}
+      {value === 1 && (
+        <TabContainer>
+          <Registration onLogin={onLogin} />
+        </TabContainer>
+      )}
     </div>
   )
 }
