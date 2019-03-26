@@ -22,6 +22,7 @@ export default class Registration extends PureComponent {
       passwordAgain: '',
       gender: '',
       email: '',
+      select: { countrys: [], birthday: '' },
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -38,14 +39,18 @@ export default class Registration extends PureComponent {
   }
 
   handleSubmit(e) {
-    const { login, password } = this.state
+    const { login, password, passwordAgain } = this.state
     const { onLogin } = this.props
 
     e.preventDefault()
 
     const getIsNotEmpty = v => v !== ''
 
-    if (getIsNotEmpty(login) && getIsNotEmpty(password)) {
+    if (
+      getIsNotEmpty(login) &&
+      getIsNotEmpty(password) &&
+      password === passwordAgain
+    ) {
       onLogin({ login, password })
     }
   }
@@ -55,8 +60,8 @@ export default class Registration extends PureComponent {
   }
 
   render() {
-    const { password, login, passwordAgain, email, gender } = this.state
-
+    const { password, login, passwordAgain, email, gender, select } = this.state
+    console.log(this.state)
     const textFieldProps = {
       onChange: this.handleChange,
       fullWidth: true,
@@ -84,7 +89,7 @@ export default class Registration extends PureComponent {
             />
             <TextField
               type="password"
-              name="password-again"
+              name="passwordAgain"
               label="Повторите пароль"
               value={passwordAgain}
               {...textFieldProps}
@@ -120,8 +125,12 @@ export default class Registration extends PureComponent {
               </div>
             </div>
             <div className="auth-form__button">
-              <CountrySelect />
-              <BirthdayDate />
+              <CountrySelect
+                onChange={this.handleChange}
+                value={null}
+                select={select}
+              />
+              <BirthdayDate onChange={this.handleChange} value={null} />
               <div className="auth-form__Button">
                 <Button type="submit" color="primary" variant="contained">
                   Зарегистрироваться

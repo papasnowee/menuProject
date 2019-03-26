@@ -9,17 +9,17 @@ class App extends React.Component {
       isAuth: false,
     }
 
-    this.handleLogin = this.handleLogin.bind(this)
+    this.onLogin = this.onLogin.bind(this)
   }
 
-  handleLogin() {
+  onLogin() {
     this.setState({ isAuth: true })
   }
 
   render() {
     const { isAuth } = this.state
 
-    return isAuth ? <HomePage /> : <Tabs onLogin={this.handleLogin} />
+    return isAuth ? <HomePage /> : <Tabs onLogin={this.onLogin} />
   }
 }
 

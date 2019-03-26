@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function SimpleTabs() {
+function SimpleTabs({ onLogin }) {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
@@ -45,12 +45,12 @@ function SimpleTabs() {
       </AppBar>
       {value === 0 && (
         <TabContainer>
-          <Login />
+          <Login onLogin={onLogin} />
         </TabContainer>
       )}
       {value === 1 && (
         <TabContainer>
-          <Registration />
+          <Registration onLogin={onLogin} />
         </TabContainer>
       )}
     </div>

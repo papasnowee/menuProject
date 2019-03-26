@@ -59,20 +59,20 @@ export default class Login extends PureComponent {
             <TextField
               type="text"
               name="login"
-              label="login"
+              label="Логин"
               value={login}
               {...textFieldProps}
             />
             <TextField
               type="password"
               name="password"
-              label="password"
+              label="Пароль"
               value={password}
               {...textFieldProps}
             />
             <div className="login-form__button">
               <Button type="submit" color="primary" variant="contained">
-                Sing in
+                Войти
               </Button>
             </div>
           </form>
