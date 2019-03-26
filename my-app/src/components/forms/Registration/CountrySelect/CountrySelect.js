@@ -250,17 +250,6 @@ class IntegrationReactSelect extends React.Component {
     return (
       <div className={classes.root}>
         <NoSsr>
-          {/* <Select
-            classes={classes}
-            styles={selectStyles}
-            options={suggestions}
-            components={components}
-            value={this.state.single}
-            onChange={this.handleChange('single')}
-            placeholder="Search a country (start with a)"
-            isClearable
-          />
-          <div className={classes.divider} /> */}
           <Select
             classes={classes}
             styles={selectStyles}
@@ -274,7 +263,7 @@ class IntegrationReactSelect extends React.Component {
             components={components}
             value={this.state.multi}
             onChange={this.handleChange('multi')}
-            placeholder="Select multiple countries"
+            placeholder="Выберете страну"
             isMulti
           />
         </NoSsr>

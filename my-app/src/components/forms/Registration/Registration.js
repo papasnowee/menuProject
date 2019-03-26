@@ -6,6 +6,7 @@ import Radio from '@material-ui/core/Radio'
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
 import CountrySelect from './CountrySelect'
+import BirthdayDate from './BirthdayDate'
 /**
  * TODO: 1) перенести стили из JSX в файл стилей
  * TODO: 2) добивить табы: первый таб форма логина, второй регистрация
@@ -120,9 +121,12 @@ export default class Registration extends PureComponent {
             </div>
             <div className="auth-form__button">
               <CountrySelect />
-              <Button type="submit" color="primary" variant="contained">
-                Зарегистрироваться
-              </Button>
+              <BirthdayDate />
+              <div className="auth-form__Button">
+                <Button type="submit" color="primary" variant="contained">
+                  Зарегистрироваться
+                </Button>
+              </div>
             </div>
           </form>
         </Paper>
