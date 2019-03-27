@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 export default class About extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  }
-
   render() {
-    return <div>о нас</div>
+    const { getNewsRequest } = this.props
+    return (
+      <>
+        <button type="button" onClick={getNewsRequest}>
+          получить список постов
+        </button>
+        <div>о нас</div>
+      </>
+    )
   }
 }

@@ -83,9 +83,9 @@ const config = {
     historyApiFallback: true,
     hot: true,
     open: true,
-    proxy: {
-      '/api': 'http://176.118.164.177:8080',
-    },
+    // proxy: {
+    //   '/api': 'http://176.118.164.177:8080',
+    // },
   },
 }
 

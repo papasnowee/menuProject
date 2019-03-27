@@ -1,4 +1,4 @@
-import { handleAction } from 'redux-actions'
+import { handleActions } from 'redux-actions'
 import { getNewsRequest, getNewsSuccess, getNewsFailure } from './actions'
 import { fromJS } from 'immutable'
 
@@ -9,9 +9,7 @@ const newsInitial = fromJS({
   arr: [],
 })
 
-console.log(getNewsRequest.toString())
-
-const news = handleAction(
+const news = handleActions(
   {
     [getNewsRequest]: (state, action) => state.set('isFetching', true),
 
