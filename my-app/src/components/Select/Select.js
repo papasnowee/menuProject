@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types, react/jsx-handler-names */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -11,7 +9,7 @@ import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
 import Chip from '@material-ui/core/Chip'
 import MenuItem from '@material-ui/core/MenuItem'
-import CancelIcon from '@material-ui/icons/Cancel'
+// import CancelIcon from '@material-ui/icons/Cancel'
 import styles from './SelectStyles.js'
 
 class IntegrationReactSelect extends React.Component {
@@ -31,18 +29,8 @@ class IntegrationReactSelect extends React.Component {
   }
 
   render() {
-    const {
-      classes,
-      theme,
-      options,
-      label,
-      placeholder,
-      value,
-      multi,
-    } = this.props
-    //     const { multi } = this.state
-    console.log('multi = ', multi)
-    // const { multi } = this.state
+    const { classes, theme, options, label, placeholder, value } = this.props
+
     const selectStyles = {
       input: base => ({
         ...base,
@@ -69,7 +57,6 @@ class IntegrationReactSelect extends React.Component {
             components={components}
             value={value}
             name="select"
-            //             onChange={this.handleChange('multi')}
             onChange={this.handleChange}
             placeholder={placeholder}
             isMulti
@@ -170,7 +157,7 @@ function MultiValue(props) {
         [props.selectProps.classes.chipFocused]: props.isFocused,
       })}
       onDelete={props.removeProps.onClick}
-      deleteIcon={<CancelIcon {...props.removeProps} />}
+      // deleteIcon={<CancelIcon {...props.removeProps} />}
     />
   )
 }

@@ -20,15 +20,7 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-}))
-
 function SimpleTabs({ onLogin }) {
-  const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
   function handleChange(event, newValue) {
@@ -36,7 +28,7 @@ function SimpleTabs({ onLogin }) {
   }
 
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Войти" />

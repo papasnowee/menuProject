@@ -1,16 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Paper, TextField, Button } from '@material-ui/core'
-import './Registration.css'
 import Radio from '@material-ui/core/Radio'
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
-import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
 import CountrySelect from './CountrySelect'
-import BirthdayDate from './BirthdayDate'
-/**
- * TODO: 1) перенести стили из JSX в файл стилей
- * TODO: 2) добивить табы: первый таб форма логина, второй регистрация
- */
+import BirthdayDate from '../../DatePicker'
+
+import './Registration.css'
 
 export default class Registration extends PureComponent {
   constructor(props) {
@@ -23,6 +18,7 @@ export default class Registration extends PureComponent {
       gender: '',
       email: '',
       select: { countrys: [], birthday: '' },
+      datePicker: new Date(),
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -60,8 +56,16 @@ export default class Registration extends PureComponent {
   }
 
   render() {
-    const { password, login, passwordAgain, email, gender, select } = this.state
-    console.log(this.state)
+    const {
+      password,
+      login,
+      passwordAgain,
+      email,
+      gender,
+      select,
+      datePicker,
+    } = this.state
+
     const textFieldProps = {
       onChange: this.handleChange,
       fullWidth: true,
@@ -130,7 +134,13 @@ export default class Registration extends PureComponent {
                 value={null}
                 select={select}
               />
-              <BirthdayDate onChange={this.handleChange} value={null} />
+              <BirthdayDate
+                onChange={this.handleChange}
+                name="datePicker"
+                value={datePicker}
+                label="Дата рождения"
+                selectedDate={datePicker}
+              />
               <div className="auth-form__Button">
                 <Button type="submit" color="primary" variant="contained">
                   Зарегистрироваться

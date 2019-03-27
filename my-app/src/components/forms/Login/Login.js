@@ -3,11 +3,6 @@ import PropTypes from 'prop-types'
 import { Paper, TextField, Button } from '@material-ui/core'
 import './Login.css'
 
-/**
- * TODO: 1) перенести стили из JSX в файл стилей
- * TODO: 2) добивить табы: первый таб форма логина, второй регистрация
- */
-
 export default class Login extends PureComponent {
   constructor(props) {
     super(props)
