@@ -1,7 +1,7 @@
 import { put, call, take } from 'redux-saga/effects'
 import { getNewsRequest, getNewsSuccess, getNewsFailure } from '../../ducks/news'
 import { getAlbumsRequest, getAlbumsSuccess, getAlbumsFailure } from '../../ducks/albums'
-import { PostsApi } from '../../api'
+import { PostsApi, AlbumsApi } from '../../api'
 
 export function* postsLoadWatcher() {
   while (true) {
@@ -22,7 +22,7 @@ export function* postsLoadWatcherAlbums() {
     yield take(getAlbumsRequest.toString())
 
     try {
-      const { data } = yield call(PostsApi.getPosts)
+      const { data } = yield call(AlbumsApi.getAlbums)
       yield put(getAlbumsSuccess({ data }))
     } catch (error) {
       console.log(error)
