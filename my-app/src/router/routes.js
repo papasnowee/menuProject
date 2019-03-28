@@ -1,6 +1,7 @@
 import uuid from 'uuid/v4'
 import About from '../pages/About'
 import Contacts from '../pages/Contacts'
+import Albums from '../pages/Albums'
 
 const routes = [
   {
@@ -25,21 +26,21 @@ const routes = [
   },
   {
     id: uuid(),
-    label: 'О нас2',
-    component: About,
-    path: '/about2',
+    label: 'Альбомы',
+    component: Albums,
+    path: '/albums',
     routes: [
       {
         id: uuid(),
         label: 'Kонтакты3',
         component: Contacts,
-        path: '/about/contacts3',
+        path: '/albums/contacts3',
       },
       {
         id: uuid(),
         label: 'Kонтакты4',
         component: Contacts,
-        path: '/about/contacts4',
+        path: '/albums/contacts4',
       },
     ],
   },

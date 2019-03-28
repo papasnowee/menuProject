@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions'
 import { getNewsRequest, getNewsSuccess, getNewsFailure } from './actions'
 import { fromJS } from 'immutable'
 
-const newsInitial = fromJS({
+const usersInitial = fromJS({
   isFetching: false,
   isFetched: false,
   data: {},
@@ -10,21 +10,21 @@ const newsInitial = fromJS({
 })
 
 //reducer
-const news = handleActions(
+const users = handleActions(
   {
     // action-creators
-    [getNewsRequest]: (state, action) => state.set('isFetching', true),
+    [getUsersRequest]: (state, action) => state.set('isFetching', true),
 
-    [getNewsSuccess]: (state, { payload: { data } }) =>
+    [getUsersSuccess]: (state, { payload: { data } }) =>
       state
         .set('isFetching', false)
         .set('isFetched', true)
         .set('data', fromJS(data)),
 
-    [getNewsFailure]: (state, action) =>
+    [getUsersFailure]: (state, action) =>
       state.set('isFetching', false).set('isFetched', true),
   },
-  newsInitial
+  usersInitial
 )
 
-export default news
+export default users

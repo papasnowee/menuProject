@@ -31,7 +31,7 @@ class HomePage extends React.Component {
   }
 
   get getRoutes() {
-    const _routes = []
+    const _routes = [] // рекурсивнеая функция getRoute пройдется по массиву routes и пропушит массив _routes компонентами <Route/>
 
     function getRoute(routes) {
       routes.forEach(({ id, path, component, routes = null }) => {

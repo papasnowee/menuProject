@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions'
-import { getNewsRequest, getNewsSuccess, getNewsFailure } from './actions'
+import { getAlbumsRequest, getAlbumsSuccess, getAlbumsFailure } from './actions'
 import { fromJS } from 'immutable'
 
-const newsInitial = fromJS({
+const albumsInitial = fromJS({
   isFetching: false,
   isFetched: false,
   data: {},
@@ -10,21 +10,21 @@ const newsInitial = fromJS({
 })
 
 //reducer
-const news = handleActions(
+const albums = handleActions(
   {
     // action-creators
-    [getNewsRequest]: (state, action) => state.set('isFetching', true),
+    [getAlbumsRequest]: (state, action) => state.set('isFetching', true),
 
-    [getNewsSuccess]: (state, { payload: { data } }) =>
+    [getAlbumsSuccess]: (state, { payload: { data } }) =>
       state
         .set('isFetching', false)
         .set('isFetched', true)
         .set('data', fromJS(data)),
 
-    [getNewsFailure]: (state, action) =>
+    [getAlbumsFailure]: (state, action) =>
       state.set('isFetching', false).set('isFetched', true),
   },
-  newsInitial
+  albumsInitial
 )
 
-export default news
+export default albums
