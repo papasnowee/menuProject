@@ -1,6 +1,7 @@
 import React from 'react'
 import HomePage from './pages/HomePage'
 import Tabs from './pages/Tabs'
+import { testExport1, testExport2 } from './testExport'
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -17,6 +18,8 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(testExport1())
+    console.log(testExport2())
     const { isAuth } = this.state
 
     return isAuth ? <HomePage /> : <Tabs onLogin={this.onLogin} />
