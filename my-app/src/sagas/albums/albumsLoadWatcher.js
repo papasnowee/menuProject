@@ -9,6 +9,7 @@ export function* albumsLoadWatcher() {
     try {
       const { data } = yield call(AlbumsApi.getAlbums)
       yield put(getAlbumsSuccess({ data }))
+      console.log("data typeOf = ", data)
     } catch (error) {
       console.log(error)
       yield put(getAlbumsFailure())

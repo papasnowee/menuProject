@@ -1,17 +1,17 @@
-import Albums from './Albums'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import Albums from "./Albums"
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
 import {
   getIsFetchingAlbums,
   getIsFetchedAlbums,
   getAlbums,
   getAlbumsRequest,
-} from '../../ducks/albums'
+} from "../../ducks/albums"
 
 const mapStateToProps = state => ({
   isFetching: getIsFetchingAlbums(state),
   isFetched: getIsFetchedAlbums(state),
-  news: getAlbums(state),
+  data: getAlbums(state),
 })
 
 const mapDispatchToProps = dispatch => ({

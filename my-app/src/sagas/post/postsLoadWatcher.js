@@ -1,7 +1,6 @@
-import { put, call, take } from 'redux-saga/effects'
-import { getNewsRequest, getNewsSuccess, getNewsFailure } from '../../ducks/news'
-import { getAlbumsRequest, getAlbumsSuccess, getAlbumsFailure } from '../../ducks/albums'
-import { PostsApi, AlbumsApi } from '../../api'
+import { put, call, take } from "redux-saga/effects"
+import { getNewsRequest, getNewsSuccess, getNewsFailure } from "../../ducks/news"
+import { PostsApi } from "../../api"
 
 export function* postsLoadWatcher() {
   while (true) {
@@ -13,20 +12,6 @@ export function* postsLoadWatcher() {
     } catch (error) {
       console.log(error)
       yield put(getNewsFailure())
-    }
-  }
-}
-
-export function* postsLoadWatcherAlbums() {
-  while (true) {
-    yield take(getAlbumsRequest.toString())
-
-    try {
-      const { data } = yield call(AlbumsApi.getAlbums)
-      yield put(getAlbumsSuccess({ data }))
-    } catch (error) {
-      console.log(error)
-      yield put(getAlbumsFailure())
     }
   }
 }

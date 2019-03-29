@@ -1,7 +1,7 @@
 import { get } from "./base"
 
-export class PostsApi {
-  static getPosts() {
+export class UsersApi {
+  static getUsers() {
     return get("users")
   }
 }
