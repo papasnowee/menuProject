@@ -9,9 +9,6 @@ import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
 
 class TableBody1 extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     const { data } = this.props
     const tableBody = data.map(row => (
