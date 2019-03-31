@@ -2,11 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles"
 import Table from "@material-ui/core/Table"
-import TableCell from "@material-ui/core/TableCell"
-import TableHead from "@material-ui/core/TableHead"
-import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
 import TableBody from "../TableBody"
+import TableHead from '../TableHead'
+import columnNames from './columnNames'
 
 const styles = theme => ({
   root: {
@@ -19,16 +18,11 @@ const styles = theme => ({
   },
 })
 
-function SimpleTable(props) {
-  const { classes, data } = props
-  const TableCellNameArray = []
-
+function SimpleTable({classes, data}) {
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
-        <TableHead>
-          <TableRow>{TableCellNameArray}</TableRow>
-        </TableHead>
+        <TableHead columnNames={columnNames}/>
         <TableBody data={data} />
       </Table>
     </Paper>
