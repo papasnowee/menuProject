@@ -6,7 +6,9 @@ import TableCell from "@material-ui/core/TableCell"
 const ReusableTableHead = ({ rows }) => (
   <TableHead>
     <TableRow>
-      {rows.map(item => Object.keys(item).map(key => <TableCell>{item[key]}</TableCell>))}
+      {rows.map(item =>
+        Object.keys(item).map(key => <TableCell key={item[key]}>{item[key]}</TableCell>)
+      )}
     </TableRow>
   </TableHead>
 )

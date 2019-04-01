@@ -17,16 +17,14 @@ const styles = theme => ({
   },
 })
 
-function SimpleTable({ classes, data, rows }) {
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead rows={rows} />
-        <TableBody data={data} />
-      </Table>
-    </Paper>
-  )
-}
+const SimpleTable = ({ classes, data, rows }) => (
+  <Paper className={classes.root}>
+    <Table className={classes.table}>
+      <TableHead rows={rows} />
+      <TableBody data={data} />
+    </Table>
+  </Paper>
+)
 
 SimpleTable.propTypes = {
   classes: PropTypes.object.isRequired,
