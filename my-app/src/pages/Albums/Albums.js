@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Table from "../../components/Table"
+import albumRows from "../../components/Table/rows"
 
 export default class Albums extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class Albums extends Component {
           получить список альбомов
         </button>
         <div>альбомы</div>
-        {isFetched ? <Table data={data} /> : null}
+        {isFetched ? <Table data={data} rows={albumRows} /> : null}
       </>
     )
   }

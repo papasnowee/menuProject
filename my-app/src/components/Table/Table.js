@@ -3,9 +3,8 @@ import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles"
 import Table from "@material-ui/core/Table"
 import Paper from "@material-ui/core/Paper"
-import TableBody from "../TableBody"
-import TableHead from '../TableHead'
-import columnNames from './columnNames'
+import TableBody from "./TableBody"
+import TableHead from "./TableHead"
 
 const styles = theme => ({
   root: {
@@ -18,11 +17,11 @@ const styles = theme => ({
   },
 })
 
-function SimpleTable({classes, data}) {
+function SimpleTable({ classes, data, rows }) {
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
-        <TableHead columnNames={columnNames}/>
+        <TableHead rows={rows} />
         <TableBody data={data} />
       </Table>
     </Paper>
