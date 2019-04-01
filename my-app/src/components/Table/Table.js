@@ -36,6 +36,11 @@ class SimpleTable extends React.Component {
       search: "",
       data: [],
       inited: false,
+      table2IsShown: false
+    }
+
+    onClick({target: {id}}) {
+
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -93,20 +98,28 @@ class SimpleTable extends React.Component {
     const { classes, rows } = this.props
 
     return (
-      <Paper className={classes.root}>
-        <Table className={classes.table}>
-          <div>
-            <TextField
-              type="text"
-              name="search"
-              value={search}
-              onChange={this.handleChange}
-            />
-          </div>
-          <TableHead rows={rows} />
-          <TableBody data={this.filtredData} />
-        </Table>
-      </Paper>
+      <>
+        <Paper className={classes.root}>
+          <Table className={classes.table} onClick={this.onClick}>
+            <div>
+              <TextField
+                type="text"
+                name="search"
+                value={search}
+                onChange={this.handleChange}
+              />
+            </div>
+            <TableHead rows={rows} />
+            <TableBody data={this.filtredData} />
+          </Table>
+        </Paper>
+        {this.state.}<Paper>
+          <Table className={classes.table} onClick={this.onClick}
+            <TableHead rows={} />
+            <TableBody data={} />
+          </Table>
+        </Paper>
+      </>
     )
   }
 }
