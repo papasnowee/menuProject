@@ -4,7 +4,7 @@ import albumRows from "../../components/Table/rows"
 
 export default class Albums extends Component {
   render() {
-    const { getAlbumsRequest, data, isFetched } = this.props
+    const { getAlbumsRequest, data, isFetched, match } = this.props
 
     return (
       <>
@@ -12,7 +12,16 @@ export default class Albums extends Component {
           получить список альбомов
         </button>
         <div>альбомы</div>
-        {isFetched ? <Table data={data} rows={albumRows} /> : null}
+        {isFetched ? (
+          <Table
+            data={data}
+            rows={albumRows}
+            link={{
+              pathname: `${match.url}/album`,
+              param: "albumId",
+            }}
+          />
+        ) : null}
       </>
     )
   }

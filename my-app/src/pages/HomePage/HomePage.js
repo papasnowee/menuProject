@@ -1,8 +1,8 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import routes from '../../router'
-import { fromJS } from 'immutable'
-import MenuComponent from '../../components/Menu'
+import React from "react"
+import { Switch, Route } from "react-router-dom"
+import routes from "../../router"
+import { fromJS } from "immutable"
+import MenuComponent from "../../components/Menu"
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class HomePage extends React.Component {
 
     function getRoute(routes) {
       routes.forEach(({ id, path, component, routes = null }) => {
-        _routes.push(<Route key={id} path={path} component={component} />)
+        _routes.push(<Route key={id} path={path} component={component} exact />)
         if (routes) getRoute(routes)
       })
     }

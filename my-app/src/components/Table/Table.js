@@ -8,6 +8,7 @@ import TableHead from "./TableHead"
 import { Map } from "immutable"
 import { normalize, schema } from "normalizr"
 import TextField from "@material-ui/core/TextField"
+import { history } from "../../router"
 
 const styles = theme => ({
   root: {
@@ -36,11 +37,7 @@ class SimpleTable extends React.Component {
       search: "",
       data: [],
       inited: false,
-      table2IsShown: false
-    }
-
-    onClick({target: {id}}) {
-
+      table2IsShown: false,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -61,7 +58,7 @@ class SimpleTable extends React.Component {
 
     return null
   }
-
+  handleClick({ target: { id } }) {}
   handleChange({ target: { name, value } }) {
     this.setState({ [name]: value })
   }
@@ -93,6 +90,14 @@ class SimpleTable extends React.Component {
     return entrySeq(filtredData)
   }
 
+  handleClickRow = id => e => {
+    const {
+      link: { pathname, param },
+    } = this.props
+
+    history.push(`${pathname}?${param}=${id}`)
+  }
+
   render() {
     const { search } = this.state
     const { classes, rows } = this.props
@@ -100,23 +105,15 @@ class SimpleTable extends React.Component {
     return (
       <>
         <Paper className={classes.root}>
-          <Table className={classes.table} onClick={this.onClick}>
-            <div>
-              <TextField
-                type="text"
-                name="search"
-                value={search}
-                onChange={this.handleChange}
-              />
-            </div>
+          <Table className={classes.table} onClick={this.handleClick}>
+            <TextField
+              type="text"
+              name="search"
+              value={search}
+              onChange={this.handleChange}
+            />
             <TableHead rows={rows} />
-            <TableBody data={this.filtredData} />
-          </Table>
-        </Paper>
-        {this.state.}<Paper>
-          <Table className={classes.table} onClick={this.onClick}
-            <TableHead rows={} />
-            <TableBody data={} />
+            <TableBody data={this.filtredData} onClickRow={this.handleClickRow} />
           </Table>
         </Paper>
       </>

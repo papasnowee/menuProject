@@ -1,5 +1,6 @@
 import uuid from "uuid/v4"
 import { About, Albums, Users, Contacts } from "../pages"
+import Album from "../pages/Album"
 
 const routes = [
   {
@@ -30,15 +31,9 @@ const routes = [
     routes: [
       {
         id: uuid(),
-        label: "Kонтакты3",
-        component: Contacts,
-        path: "/albums/contacts3",
-      },
-      {
-        id: uuid(),
-        label: "Kонтакты4",
-        component: Contacts,
-        path: "/albums/contacts4",
+        label: "Альбом",
+        component: Album,
+        path: "/albums/album:albumId?",
       },
     ],
   },
@@ -47,20 +42,7 @@ const routes = [
     label: "Пользователи",
     component: Users,
     path: "/users",
-    routes: [
-      {
-        id: uuid(),
-        label: "Kонтакты3",
-        component: Contacts,
-        path: "/users/contacts3",
-      },
-      {
-        id: uuid(),
-        label: "Kонтакты4",
-        component: Contacts,
-        path: "/users/contacts4",
-      },
-    ],
+    routes: [],
   },
 ]
 
