@@ -1,6 +1,6 @@
 import React from "react"
 import { Switch, Route } from "react-router-dom"
-import routes from "../../router"
+import routes from "../../../router"
 import { fromJS } from "immutable"
 import MenuComponent from "../../components/Menu"
 

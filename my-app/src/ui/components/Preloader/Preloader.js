@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles"
 import CircularProgress from "@material-ui/core/CircularProgress"
+import "./Preloader.css"
 
 const styles = theme => ({
   progress: {
@@ -11,9 +12,12 @@ const styles = theme => ({
 
 function CircularIndeterminate(props) {
   const { classes } = props
+  const classNames = {}
+  classNames[classes.progress] = true
+  classNames["preloader-container__circul"] = true
   return (
-    <div>
-      <CircularProgress className={classes.progress} />
+    <div className="preloader-container">
+      <CircularProgress className={classNames} />
     </div>
   )
 }

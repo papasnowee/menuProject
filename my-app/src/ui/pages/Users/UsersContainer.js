@@ -1,23 +1,23 @@
-import Albums from "./Albums"
+import Users from "./Users"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import {
-  getIsFetchingAlbums,
-  getIsFetchedAlbums,
-  getAlbums,
-  getAlbumsRequest,
-} from "../../ducks/albums"
+  getIsFetchingUsers,
+  getIsFetchedUsers,
+  getUsers,
+  getUsersRequest,
+} from "../../../ducks/users"
 
 const mapStateToProps = state => ({
-  isFetching: getIsFetchingAlbums(state),
-  isFetched: getIsFetchedAlbums(state),
-  data: getAlbums(state),
+  isFetching: getIsFetchingUsers(state),
+  isFetched: getIsFetchedUsers(state),
+  news: getUsers(state),
 })
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(
     {
-      getAlbumsRequest,
+      getUsersRequest,
     },
     dispatch
   ),
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Albums)
+)(Users)

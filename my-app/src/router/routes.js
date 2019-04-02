@@ -1,6 +1,6 @@
 import uuid from "uuid/v4"
-import { About, Albums, Users, Contacts } from "../pages"
-import Album from "../pages/Album"
+import { About, Albums, Users, Contacts } from "../ui/pages"
+import Album from "../ui/pages/Album"
 
 const routes = [
   {
@@ -28,6 +28,7 @@ const routes = [
     label: "Альбомы",
     component: Albums,
     path: "/albums",
+    effects: [],
     routes: [
       {
         id: uuid(),

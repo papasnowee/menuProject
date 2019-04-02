@@ -8,7 +8,7 @@ import TableHead from "./TableHead"
 import { Map } from "immutable"
 import { normalize, schema } from "normalizr"
 import TextField from "@material-ui/core/TextField"
-import { history } from "../../router"
+import { history } from "../../../router"
 
 const styles = theme => ({
   root: {

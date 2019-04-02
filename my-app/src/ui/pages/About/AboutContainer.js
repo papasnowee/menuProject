@@ -1,23 +1,23 @@
-import Users from "./Users"
+import About from "./About"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import {
-  getIsFetchingUsers,
-  getIsFetchedUsers,
-  getUsers,
-  getUsersRequest,
-} from "../../ducks/users"
+  getIsFetchingNews,
+  getIsFetchedNews,
+  getNews,
+  getNewsRequest,
+} from "../../../ducks/news"
 
 const mapStateToProps = state => ({
-  isFetching: getIsFetchingUsers(state),
-  isFetched: getIsFetchedUsers(state),
-  news: getUsers(state),
+  isFetching: getIsFetchingNews(state),
+  isFetched: getIsFetchedNews(state),
+  news: getNews(state),
 })
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(
     {
-      getUsersRequest,
+      getNewsRequest,
     },
     dispatch
   ),
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Users)
+)(About)
