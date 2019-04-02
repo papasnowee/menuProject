@@ -21,7 +21,7 @@ export default class Album extends Component {
   render() {
     const { title, id, userId } = this.album
 
-    if (isFetched) return <Preloader />
+    if (!isFetched) return <Preloader />
 
     return <div>{`id: ${id},  userId: ${userId}, title: ${title}`}</div>
   }
