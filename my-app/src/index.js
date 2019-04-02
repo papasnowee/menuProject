@@ -1,11 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import { Provider } from 'react-redux'
-import store from './store'
-import { history } from './router'
-import { ConnectedRouter } from 'react-router-redux'
+import React from "react"
+import ReactDOM from "react-dom"
+import "./index.css"
+import App from "./App"
+import { Provider } from "react-redux"
+import store from "./store"
+import { history } from "./router"
+import { ConnectedRouter } from "react-router-redux"
 /**
  * TODO: 1)
  * сделать ducks(selectors, actions, reducer),
@@ -22,5 +22,5 @@ ReactDOM.render(
       <App />
     </ConnectedRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 )

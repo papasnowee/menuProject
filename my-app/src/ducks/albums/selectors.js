@@ -1,4 +1,5 @@
 import createImmutableSelector from "create-immutable-selector"
+import { entrySeq } from "../utils"
 
 export const getIsFetchingAlbums = createImmutableSelector(
   state => state.getIn(["albums", "isFetching"]),
@@ -11,6 +12,11 @@ export const getIsFetchedAlbums = createImmutableSelector(
 )
 
 export const getAlbums = createImmutableSelector(
+  state => state.getIn(["albums", "data"]),
+  substate => entrySeq(substate)
+)
+
+export const getAlbumsNormalized = createImmutableSelector(
   state => state.getIn(["albums", "data"]),
   substate => substate.toJS()
 )
