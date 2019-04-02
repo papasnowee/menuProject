@@ -1,6 +1,8 @@
 import React from "react"
 import HomePage from "./pages/HomePage"
-import Tabs from "./pages/Tabs"
+import tabsWithOnLogin from "./pages/Tabs"
+import { Route, Switch, Redirect } from "react-router-dom"
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -19,7 +21,16 @@ class App extends React.Component {
   render() {
     const { isAuth } = this.state
 
-    return isAuth ? <HomePage /> : <Tabs onLogin={this.onLogin} />
+    return isAuth ? (
+      <HomePage />
+    ) : (
+      <>
+        <Switch>
+          <Route path="/" component={tabsWithOnLogin(this.onLogin)} exact />
+          <Redirect to="/" />
+        </Switch>
+      </>
+    )
   }
 }
 
