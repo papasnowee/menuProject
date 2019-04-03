@@ -7,25 +7,25 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      isAuth: false,
-    }
+    // this.state = {
+    //   isAuth: false,
+    // }
 
-    this.onLogin = this.onLogin.bind(this)
-  }
+    //   this.onLogin = this.onLogin.bind(this)
+    // }
 
-  onLogin() {
-    this.setState({ isAuth: true })
+    // onLogin() {
+    //   this.setState({ isAuth: true })
   }
 
   render() {
-    const { isAuth } = this.state
+    const { isAuth, onLogin } = this.props
 
     return isAuth ? (
       <HomePage />
     ) : (
       <Switch>
-        <Route path="/" component={tabsWithOnLogin(this.onLogin)} exact />
+        <Route path="/" component={tabsWithOnLogin(onLogin)} exact />
         <Redirect to="/" />
       </Switch>
     )

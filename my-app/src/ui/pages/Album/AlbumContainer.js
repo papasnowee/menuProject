@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(
     {
-      getAlbumsRequest,
+      getAlbumsRequest, // action creator
     },
     dispatch
   ),

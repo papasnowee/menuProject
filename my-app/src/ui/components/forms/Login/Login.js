@@ -1,15 +1,15 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { Paper, TextField, Button } from '@material-ui/core'
-import './Login.css'
+import React, { PureComponent } from "react"
+import PropTypes from "prop-types"
+import { Paper, TextField, Button } from "@material-ui/core"
+import "./Login.css"
 
 export default class Login extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
-      login: '',
-      password: '',
+      login: "",
+      password: "",
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -27,10 +27,11 @@ export default class Login extends PureComponent {
   handleSubmit(e) {
     const { login, password } = this.state
     const { onLogin } = this.props
+    console.log("onLogin = ", onLogin)
 
     e.preventDefault()
 
-    const getIsNotEmpty = v => v !== ''
+    const getIsNotEmpty = v => v !== ""
 
     if (getIsNotEmpty(login) && getIsNotEmpty(password)) {
       onLogin({ login, password })
@@ -43,7 +44,7 @@ export default class Login extends PureComponent {
     const textFieldProps = {
       onChange: this.handleChange,
       fullWidth: true,
-      margin: 'normal',
+      margin: "normal",
       required: true,
     }
 
