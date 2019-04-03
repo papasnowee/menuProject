@@ -1,22 +1,29 @@
 import uuid from "uuid/v4"
 import { About, Albums, Users, Contacts } from "../ui/pages"
 import Album from "../ui/pages/Album"
+import { getAlbumsRequest, getIsFetchedAlbums } from "../ducks/albums"
+
+const loadAlbums = {
+  selector: getIsFetchedAlbums,
+  effect: getAlbumsRequest,
+}
 
 const routes = [
   {
-    id: uuid(),
+    id: "0",
     label: "О нас",
     component: About,
     path: "/about",
+    isNav: true,
     routes: [
       {
-        id: uuid(),
+        id: "0-0",
         label: "Kонтакты1",
         component: Contacts,
         path: "/about/contacts1",
       },
       {
-        id: uuid(),
+        id: "0-1",
         label: "Kонтакты2",
         component: Contacts,
         path: "/about/contacts2",
@@ -24,14 +31,15 @@ const routes = [
     ],
   },
   {
-    id: uuid(),
+    id: "1",
     label: "Альбомы",
     component: Albums,
     path: "/albums",
-    effects: [],
+    effects: [loadAlbums],
+    isNav: true,
     routes: [
       {
-        id: uuid(),
+        id: "1-0",
         label: "Альбом",
         component: Album,
         path: "/albums/album:albumId?",
@@ -39,7 +47,7 @@ const routes = [
     ],
   },
   {
-    id: uuid(),
+    id: "2",
     label: "Пользователи",
     component: Users,
     path: "/users",

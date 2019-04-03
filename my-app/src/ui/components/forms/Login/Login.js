@@ -27,7 +27,6 @@ export default class Login extends PureComponent {
   handleSubmit(e) {
     const { login, password } = this.state
     const { onLogin } = this.props
-    console.log("onLogin = ", onLogin)
 
     e.preventDefault()
 

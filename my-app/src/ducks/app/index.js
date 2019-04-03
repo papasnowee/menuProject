@@ -1,3 +1,8 @@
-export { default } from "./reducer"
-export * from "./actions"
-export * from "./selectors"
+import { combineReducers } from "redux-immutable"
+import login from "./login"
+
+export default combineReducers({
+  login,
+})
+
+export * from "./login"

@@ -1,4 +1,5 @@
-import history from './history'
+import history from "./history"
 
-export { default } from './routes'
+export { default } from "./routes"
+export * from "./routesNormalizer"
 export { history }

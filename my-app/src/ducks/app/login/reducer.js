@@ -2,7 +2,7 @@ import { handleActions } from "redux-actions"
 import { onLogin } from "./actions"
 import { fromJS } from "immutable"
 
-const appInitial = fromJS({
+const loginInitial = fromJS({
   isAuth: false,
 })
 
@@ -12,7 +12,7 @@ const login = handleActions(
     // action-creators
     [onLogin]: (state, action) => state.set("isAuth", true),
   },
-  appInitial
+  loginInitial
 )
 
 export default login

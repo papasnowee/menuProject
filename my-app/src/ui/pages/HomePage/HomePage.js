@@ -4,6 +4,9 @@ import routes from "../../../router"
 import { fromJS } from "immutable"
 import MenuComponent from "../../components/Menu"
 
+// console.log(routesNormalized)
+// console.log(routes)
+
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
@@ -33,9 +36,21 @@ class HomePage extends React.Component {
   get getRoutes() {
     const _routes = [] // рекурсивнеая функция getRoute пройдется по массиву routes и пропушит массив _routes компонентами <Route/>
 
+    const { routeRendered } = this.props
+
     function getRoute(routes) {
-      routes.forEach(({ id, path, component, routes = null }) => {
-        _routes.push(<Route key={id} path={path} component={component} exact />)
+      routes.forEach(({ id, path, routes = null, component: Component }) => {
+        _routes.push(
+          <Route
+            key={id}
+            path={path}
+            render={props => {
+              routeRendered({ id })
+              return <Component {...props} />
+            }}
+            exact
+          />
+        )
         if (routes) getRoute(routes)
       })
     }
