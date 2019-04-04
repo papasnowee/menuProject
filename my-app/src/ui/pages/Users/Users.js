@@ -1,14 +1,19 @@
 import React, { Component } from "react"
+import Preloader from "../../components/Preloader"
 
 export default class Users extends Component {
   render() {
-    const { getUsersRequest } = this.props
+    const { data, match, isFetching, isFetched } = this.props
+
+    if (isFetching) return <Preloader />
+    console.log("data v Users = ", data)
     return (
       <>
-        <button type="button" onClick={getUsersRequest}>
-          получить список пользователей
-        </button>
-        <div>пользователи</div>
+        {isFetched && (
+          <>
+            <div>пользователи</div>
+          </>
+        )}
       </>
     )
   }

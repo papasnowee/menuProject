@@ -2,10 +2,14 @@ import uuid from "uuid/v4"
 import { About, Albums, Users, Contacts } from "../ui/pages"
 import Album from "../ui/pages/Album"
 import { getAlbumsRequest, getIsFetchedAlbums } from "../ducks/albums"
-
+import { getUsersRequest, getIsFetchedUsers } from "../ducks/users"
 const loadAlbums = {
   selector: getIsFetchedAlbums,
   effect: getAlbumsRequest,
+}
+const loadUsers = {
+  selector: getIsFetchedUsers,
+  effect: getUsersRequest,
 }
 
 const routes = [
@@ -43,6 +47,7 @@ const routes = [
         label: "Альбом",
         component: Album,
         path: "/albums/album:albumId?",
+        effects: "extends",
       },
     ],
   },
@@ -50,7 +55,9 @@ const routes = [
     id: "2",
     label: "Пользователи",
     component: Users,
-    path: "/users",
+    memoize: true,
+    path: "/users/page=:numberUsersPage?",
+    effects: [loadUsers],
     routes: [],
   },
 ]

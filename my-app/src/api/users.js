@@ -1,7 +1,9 @@
 import { get } from "./base"
-
-export class UsersApi {
-  static getUsers() {
-    return get("users")
+function usersApi(url) {
+  class UsersApi {
+    static getUsers() {
+      return get(url, "https://reqres.in/api")
+    }
   }
 }
+export default usersApi

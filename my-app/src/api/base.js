@@ -1,12 +1,13 @@
-import axios from 'axios'
+import axios from "axios"
 
-const API = 'https://jsonplaceholder.typicode.com/'
+const API = "https://jsonplaceholder.typicode.com/"
+const API2 = "https://reqres.in/api"
 
 const put = (url, data = {}) =>
   axios({
-    method: 'POST',
+    method: "POST",
     headers: {
-      'content-type': 'application/json',
+      "content-type": "application/json",
     },
     url: API + url,
     data,
@@ -14,7 +15,7 @@ const put = (url, data = {}) =>
 
 const get = url =>
   axios({
-    method: 'GET',
+    method: "GET",
     url: API + url,
   })
 
