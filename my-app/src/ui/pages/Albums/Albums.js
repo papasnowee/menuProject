@@ -4,10 +4,10 @@ import albumRows from "../../components/Table/rows"
 import Preloader from "../../components/Preloader"
 
 export default class Albums extends Component {
-  componentDidMount() {
-    const { isFetched, getAlbumsRequest } = this.props
-    if (!isFetched) getAlbumsRequest()
-  }
+  // componentDidMount() {
+  //   const { isFetched, getAlbumsRequest } = this.props
+  //   if (!isFetched) getAlbumsRequest()
+  // }
 
   render() {
     const { data, match, isFetching, isFetched } = this.props

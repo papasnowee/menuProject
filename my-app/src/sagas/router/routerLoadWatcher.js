@@ -1,16 +1,22 @@
-import { put, take, select, all } from "redux-saga/effects"
+import { put, take, select, call } from "redux-saga/effects"
 import { routeRendered } from "../../ducks/router"
 import { routesNormalized } from "../../router"
+import { AlbumsApi } from "../../api"
 
 function* routerLoadWatcher() {
   while (true) {
     const {
       payload: { id },
     } = yield take(routeRendered.toString())
-
-    const { effects = null } = routesNormalized[id]
-
-    console.log(route)
+    console.log("id v routerLoadWatcher = ", id)
+    try {
+      const { effects = null } = routesNormalized[id]
+      console.log("effects =", effects[0])
+      !effects.selector ? yield put(effects[0].effect()) : null
+    } catch (error) {
+      console.log(error)
+      yield put("как то вычислить название экшена")
+    }
 
     // по айди беру из плоской структуры объект, из этого объекта беру эффектс
     // из эффектов беру селекторы

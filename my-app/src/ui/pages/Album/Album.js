@@ -2,10 +2,10 @@ import React, { Component } from "react"
 import Preloader from "../../components/Preloader"
 
 export default class Album extends Component {
-  componentDidMount() {
-    const { isFetched, getAlbumsRequest } = this.props
-    if (!isFetched) getAlbumsRequest()
-  }
+  // componentDidMount() {
+  //   const { isFetched, getAlbumsRequest } = this.props
+  //   if (!isFetched) getAlbumsRequest()
+  // }
 
   get album() {
     const {
