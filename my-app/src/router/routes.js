@@ -1,5 +1,4 @@
-import uuid from "uuid/v4"
-import { About, Albums, Users, Contacts } from "../ui/pages"
+import { About, Albums, Users, Contacts, UsersPage } from "../ui/pages"
 import Album from "../ui/pages/Album"
 import { getAlbumsRequest, getIsFetchedAlbums } from "../ducks/albums"
 import { getUsersRequest, getIsFetchedUsers } from "../ducks/users"
@@ -56,9 +55,17 @@ const routes = [
     label: "Пользователи",
     component: Users,
     memoize: true,
-    path: "/users/page=:numberUsersPage?",
+    path: "/users",
     effects: [loadUsers],
-    routes: [],
+    routes: [
+      {
+        id: "2-0",
+        label: "Страница пользователей",
+        component: UsersPage,
+        path: "/users/page:param",
+        effects: "extends",
+      },
+    ],
   },
 ]
 

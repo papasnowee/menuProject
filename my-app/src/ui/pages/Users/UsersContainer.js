@@ -11,7 +11,7 @@ import {
 const mapStateToProps = state => ({
   isFetching: getIsFetchingUsers(state),
   isFetched: getIsFetchedUsers(state),
-  news: getUsers(state),
+  data: getUsers(state),
 })
 
 const mapDispatchToProps = dispatch => ({

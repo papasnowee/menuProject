@@ -4,9 +4,6 @@ import routes from "../../../router"
 import { fromJS } from "immutable"
 import MenuComponent from "../../components/Menu"
 
-// console.log(routesNormalized)
-// console.log(routes)
-
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
@@ -46,7 +43,7 @@ class HomePage extends React.Component {
             key={id}
             path={path}
             render={props => {
-              routeRendered({ id, numberUsersPage: props.match.params.numberUsersPage }) // функция от объекта {id: значение айди}
+              routeRendered({ id, param: props.match.params.param }) // функция от объекта {id: значение айди}
               return <Component {...props} />
             }}
             exact
