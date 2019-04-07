@@ -3,17 +3,34 @@ import { getUsersRequest, getUsersSuccess, getUsersFailure } from "./actions"
 import { fromJS } from "immutable"
 
 const usersInitial = fromJS({
-  isFetching: false,
-  isFetched: false,
-  data: {},
-  arr: [],
+    page1: {
+        isFetching: false,
+        isFetched: false,
+        data: {},
+    },
+    page2: {
+        isFetching: false,
+        isFetched: false,
+        data: {},
+    },
+    page3: {
+        isFetching: false,
+        isFetched: false,
+        data: {},
+    },
+    page4: {
+        isFetching: false,
+        isFetched: false,
+        data: {},
+    },
+    arr: [],
 })
 
 //reducer
 const users = handleActions(
   {
     // action-creators
-    [getUsersRequest]: (state, action) => state.set("isFetching", true),
+    [getUsersRequest]: (state, {payload: param}) => state.set(`page${param}`, {isFetching: true}),
 
     [getUsersSuccess]: (state, { payload: { data } }) =>
       state

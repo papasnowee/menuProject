@@ -2,6 +2,7 @@ import { About, Albums, Users, Contacts, UsersPage } from "../ui/pages"
 import Album from "../ui/pages/Album"
 import { getAlbumsRequest, getIsFetchedAlbums } from "../ducks/albums"
 import { getUsersRequest, getIsFetchedUsers } from "../ducks/users"
+
 const loadAlbums = {
   selector: getIsFetchedAlbums,
   effect: getAlbumsRequest,
@@ -62,7 +63,7 @@ const routes = [
         id: "2-0",
         label: "Страница пользователей",
         component: UsersPage,
-        path: "/users/page:param",
+        path: "/users/page:param?",
         effects: "extends",
       },
     ],
