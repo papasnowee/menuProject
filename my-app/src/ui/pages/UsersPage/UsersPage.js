@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { withUrlParser } from "../../../router/withUrlParser"
 
 const UsersPage = function({ data, urlParse }) {
   console.log("data v UsersPage", data)
@@ -16,4 +17,4 @@ const UsersPage = function({ data, urlParse }) {
   )
 }
 
-export default UsersPage
+export default withUrlParser(UsersPage)

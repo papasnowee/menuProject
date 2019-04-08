@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { withUrlParser } from "../../../router/withUrlParser"
 
 class Users extends Component {
   render() {
@@ -32,4 +31,4 @@ class Users extends Component {
   }
 }
 
-export default withUrlParser(Users)
+export default Users
