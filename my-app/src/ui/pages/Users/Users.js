@@ -1,16 +1,16 @@
 import React, { Component } from "react"
-import Preloader from "../../components/Preloader"
-import { Link, Route } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { withUrlParser } from "../../../router/withUrlParser"
 
-export default class Users extends Component {
+class Users extends Component {
   render() {
-    const { data, match, isFetching, isFetched } = this.props
+    // const { data, match, isFetching, isFetched } = this.props
 
-    if (isFetching) return <Preloader />
-    console.log("data v Users = ", data)
+    // if (isFetching) return <Preloader />
+    // console.log("data v Users = ", data)
     return (
       <>
-        {isFetched && (
+        {/* {isFetched && (
           <>
             <h1>пользователи</h1>
           <div>
@@ -19,13 +19,17 @@ export default class Users extends Component {
               </h2>
               <div>
                   {JSON.stringify(data.data)}
-              </div>
+              </div> */}
 
-              <Link to="/users/page1">перейти к пагинации сраниц пользователей(компонент UsersPage)</Link>
-          </div>
-          </>
-        )}
+        <Link to="/users/page1">
+          перейти к пагинации сраниц пользователей(компонент UsersPage)
+        </Link>
+        {/* </div> */}
+        {/* </>
+        )} */}
       </>
     )
   }
 }
+
+export default withUrlParser(Users)

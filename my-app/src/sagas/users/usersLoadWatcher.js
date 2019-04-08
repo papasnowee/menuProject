@@ -6,12 +6,11 @@ export function* usersLoadWatcher() {
     const {
       payload: { param },
     } = yield take(getUsersRequest.toString())
-    console.log("usersrLoadWatcher param = ", param)
+
     try {
-      // const { data } = yield call(usersApi(numberUsersPage)[getUsers])
-      const { data } = yield call(usersApi())
+      const { data } = yield call(usersApi, { param })
       console.log(data)
-      yield put(getUsersSuccess({ data }))
+      yield put(getUsersSuccess({ data, param }))
     } catch (error) {
       console.log(error)
       yield put(getUsersFailure())

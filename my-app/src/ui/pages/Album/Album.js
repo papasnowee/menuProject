@@ -1,21 +1,12 @@
 import React, { Component } from "react"
 import Preloader from "../../components/Preloader"
+import { compose } from "recompose"
+import { withUrlParser } from "../../../router/withUrlParser"
 
-export default class Album extends Component {
-  // componentDidMount() {
-  //   const { isFetched, getAlbumsRequest } = this.props
-  //   if (!isFetched) getAlbumsRequest()
-  // }
-
+class Album extends Component {
   get album() {
-    const {
-      location: { search },
-      albumsNormalized,
-    } = this.props
-
-    const params = new URLSearchParams(search)
-    const albumId = params.get("albumId")
-
+    const { albumsNormalized, urlParse } = this.props
+    const albumId = urlParse("albumId")
     return albumsNormalized[albumId]
   }
 
@@ -29,3 +20,5 @@ export default class Album extends Component {
     )
   }
 }
+
+export default withUrlParser(Album)

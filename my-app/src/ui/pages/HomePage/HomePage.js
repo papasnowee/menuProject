@@ -7,12 +7,13 @@ import MenuComponent from "../../components/Menu"
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
-    this.handleSlideToggle = this.handleSlideToggle.bind(this)
-  }
 
-  state = {
-    menu: fromJS({}),
-    inited: false,
+    this.state = {
+      menu: fromJS({}),
+      inited: false,
+    }
+
+    this.handleSlideToggle = this.handleSlideToggle.bind(this)
   }
 
   static getDerivedStateFromProps(props, { inited }) {
@@ -43,7 +44,7 @@ class HomePage extends React.Component {
             key={id}
             path={path}
             render={props => {
-              routeRendered({ id, param: props.match.params.param }) // функция от объекта {id: значение айди}
+              routeRendered({ id }) // функция от объекта {id: значение айди}
               return <Component {...props} />
             }}
             exact
