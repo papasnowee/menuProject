@@ -1,18 +1,16 @@
-import { PureComponent } from "react"
+import React from "react"
 
 export function withUrlParser(Component) {
-  return class WithUrlParser extends PureComponent {
-    urlParse(params) {
-      const {
-        location: { search },
-      } = this.props
+  return class WithUrlParser extends React.PureComponent {
+    urlParse(params, location) {
+      const { search } = location
 
       const paramsFromUrl = new URLSearchParams(search)
 
       const map = {}
-      params.forEach(p => (map[p] = paramsFromUrl.get(p)))
+      const mapper = p => (map[p] = paramsFromUrl.get(p))
 
-      return Array.isArray(params) ? map : paramsFromUrl.get(params)
+      return Array.isArray(params) ? params.forEach(mapper) : paramsFromUrl.get(params)
     }
 
     render() {

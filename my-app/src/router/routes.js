@@ -56,14 +56,14 @@ const routes = [
     label: "Пользователи",
     component: Users,
     memoize: true,
-    path: "/users",
+    path: "/users/:pageNumb",
     effects: [loadUsers],
     routes: [
       {
         id: "2-0",
         label: "Страница пользователей",
         component: UsersPage,
-        path: "/users/page:param?",
+        path: "/users/page:pageNumb",
         effects: "extends",
       },
     ],

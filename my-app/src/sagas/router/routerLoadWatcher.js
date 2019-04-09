@@ -9,7 +9,7 @@ function* routerLoadWatcher() {
         payload: { id },
       } = yield take(routeRendered.toString())
 
-      let { effects = null } = routesNormalized[id]
+      let { effects = null, fetchWithParams } = routesNormalized[id]
 
       while (effects === "extends") {
         // на случай, если большая вложенность в routes и extends не только у ребенка , но и у родителя и т.д.
@@ -36,3 +36,35 @@ function* routerLoadWatcher() {
 }
 
 export default routerLoadWatcher
+
+// store = {
+//   users: {
+//     pages: {
+//       loadStatusPage1: {
+//         isFetching: false,
+//         isFetched: false,
+//       },
+//       loadStatusPage2: {
+//         isFetching: false,
+//         isFetched: false,
+//       },
+
+//       dataRowsOnPage: {
+//         1: [1, 2, 3],
+//         2: [4, 5, 6],
+//         3: [7, 8, 9],
+//       },
+//     },
+//     data: {
+//       1: "string",
+//       2: "string",
+//       3: "string",
+//       4: "string",
+//       5: "string",
+//       6: "string",
+//       7: "string",
+//       8: "string",
+//       9: "string",
+//     },
+//   },
+// }
