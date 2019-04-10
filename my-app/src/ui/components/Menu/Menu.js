@@ -1,17 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react"
+import { Link } from "react-router-dom"
 
 function Menu({ routes, handleSlideToggle, menu }) {
   const menuBuilder = routes =>
-    routes.map(({ id, path, label, routes = null }) => (
+    routes.map(({ id, linkPath, label, routes = null }) => (
       <li className="menu__item" key={id}>
-        <Link to={path}>{label}</Link>
+        <Link to={linkPath}>{label}</Link>
         {routes ? (
           <>
             <button type="button" onClick={handleSlideToggle(id)}>
-              {menu.get(id) ? '-' : '+'}
+              {menu.get(id) ? "-" : "+"}
             </button>
-            <ul style={{ display: `${menu.get(id) ? 'block' : 'none'}` }}>
+            <ul style={{ display: `${menu.get(id) ? "block" : "none"}` }}>
               {menuBuilder(routes)}
             </ul>
           </>

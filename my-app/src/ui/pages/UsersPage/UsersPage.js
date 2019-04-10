@@ -9,7 +9,7 @@ const UsersPage = function({ data, urlParse }) {
     <>
       <User />
       <Previous />
-      <Link to="/users/page${pageNumb}">1</Link>
+      <Link to="/users/page">1</Link>
       <Link to="/users/page2">2</Link>
       <Link to="/users/page3">3</Link>
       <Link to="/users/page4">4</Link>

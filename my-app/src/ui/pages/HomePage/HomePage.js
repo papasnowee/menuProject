@@ -37,12 +37,12 @@ class HomePage extends React.Component {
     const { routeRendered } = this.props
 
     function getRoute(routes) {
-      routes.forEach(({ id, path, routes = null, component: Component }) => {
+      routes.forEach(({ id, routePath, routes = null, component: Component }) => {
         //хитрая деструктуризация component: Component
         _routes.push(
           <Route
             key={id}
-            path={path}
+            path={routePath}
             render={props => {
               routeRendered({ id }) // функция от объекта {id: значение айди}
               return <Component {...props} />

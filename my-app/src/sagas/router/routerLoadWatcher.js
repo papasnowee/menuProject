@@ -9,7 +9,7 @@ function* routerLoadWatcher() {
         payload: { id },
       } = yield take(routeRendered.toString())
 
-      let { effects = null, fetchWithParams } = routesNormalized[id]
+      let { effects = null } = routesNormalized[id]
 
       while (effects === "extends") {
         // на случай, если большая вложенность в routes и extends не только у ребенка , но и у родителя и т.д.
@@ -19,6 +19,24 @@ function* routerLoadWatcher() {
           if (id[i] === "-") id = id.substring(0, i) // пример изменения id: '2-1-2' --> '2-1'
         }
         effects = routesNormalized[id].effects
+      }
+
+      if (routesNormalized[id].searchParamName) {
+        const search = routesNormalized[id].searchParamName
+        const paramsFromUrl = new URLSearchParams(search)
+
+        const map = {}
+        const mapper = p => (map[p] = paramsFromUrl.get(p))
+        const param = Array.isArray(params)
+          ? params.forEach(mapper)
+          : paramsFromUrl.get(params)
+
+        const selectors = yield all(effects.map(({ selector: s }) => select(s)))
+        yield all(
+          selectors.map((s, i) => {
+            if (!s) return put(effects[i].effect())
+          })
+        )
       }
 
       if (effects) {
