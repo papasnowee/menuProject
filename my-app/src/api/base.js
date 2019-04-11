@@ -10,10 +10,10 @@ const put = (url, data = {}) =>
     data,
   })
 
-const get = (url, API, param) =>
+const get = (url, param) =>
   axios({
     method: "GET",
-    url: API + url + param,
+    url: url + param,
   })
 
 export { put, get }

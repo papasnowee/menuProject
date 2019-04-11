@@ -1,16 +1,30 @@
 import createImmutableSelector from "create-immutable-selector"
 
 export const getIsFetchingUsers = createImmutableSelector(
-  state => state.getIn(["users", "isFetching"]),
+  state => state.getIn(["users", `page${state.param}`, "isFetching"]),
   substate => substate
 )
 
 export const getIsFetchedUsers = createImmutableSelector(
-  state => state.getIn(["users", "isFetched"]),
+  state => state.getIn(["users", `page${state.param}`, "isFetched"]),
   substate => substate
 )
 
-export const getUsers = createImmutableSelector(
-  state => state.getIn(["users", "data"]),
+export const getPage = createImmutableSelector(
+  state => state.getIn(["users", `page${state.param}`, "data"]),
   substate => substate.toJS()
 )
+
+// const stat = {
+//   users: {
+//     page1: 'data: "{ 1: 1, 2: 2 }",',
+//   },
+// }
+// console.log(
+//   "u4imsya selectoram",
+//   createImmutableSelector(
+//     // state => state.getIn(["users", "page1", "data"]),
+//     state => state.getIn(["users", "page1"]),
+//     substate => substate
+//   )(stat)
+// )

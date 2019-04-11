@@ -4,13 +4,13 @@ import { usersApi } from "../../api"
 export function* usersLoadWatcher() {
   while (true) {
     const {
-      payload: { param },
+      payload: { params },
     } = yield take(getUsersRequest.toString())
 
     try {
-      const { data } = yield call(usersApi, { param })
+      const { data } = yield call(usersApi(params), { params })
       console.log(data)
-      yield put(getUsersSuccess({ data, param }))
+      yield put(getUsersSuccess({ data, params }))
     } catch (error) {
       console.log(error)
       yield put(getUsersFailure())

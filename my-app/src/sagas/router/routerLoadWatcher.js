@@ -6,14 +6,14 @@ function* routerLoadWatcher() {
   try {
     while (true) {
       let {
-        payload: { id },
+        payload: { id, params },
       } = yield take(routeRendered.toString())
-
+      console.log("params", params)
       let { effects = null } = routesNormalized[id]
-
+      console.log("effects = ", effects)
       while (effects === "extends") {
         // на случай, если большая вложенность в routes и extends не только у ребенка , но и у родителя и т.д.
-
+        console.log("effects = ", effects)
         for (let i = id.length - 2; i > 0; i--) {
           // цикл который обрезает строку id до айди родителя
           if (id[i] === "-") id = id.substring(0, i) // пример изменения id: '2-1-2' --> '2-1'
@@ -21,20 +21,15 @@ function* routerLoadWatcher() {
         effects = routesNormalized[id].effects
       }
 
-      if (routesNormalized[id].searchParamName) {
-        const search = routesNormalized[id].searchParamName
-        const paramsFromUrl = new URLSearchParams(search)
-
+      // если для данной страницы в урл имеется параметр, используя который, делаются запросы к серверу
+      if (params) {
         const map = {}
-        const mapper = p => (map[p] = paramsFromUrl.get(p))
-        const param = Array.isArray(params)
-          ? params.forEach(mapper)
-          : paramsFromUrl.get(params)
-
-        const selectors = yield all(effects.map(({ selector: s }) => select(s)))
+        // console.log("effects = ", effects)
+        // селектор будет функцией принимающей параметры, эффект тоже
+        const selectors = yield all(effects.map(({ selector: s }) => select(s(params))))
         yield all(
           selectors.map((s, i) => {
-            if (!s) return put(effects[i].effect())
+            if (!s) return put(effects[i].effect(params))
           })
         )
       }

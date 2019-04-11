@@ -4,14 +4,14 @@ import { bindActionCreators } from "redux"
 import {
   getIsFetchingUsers,
   getIsFetchedUsers,
-  getUsers,
+  getPage,
   getUsersRequest,
 } from "../../../ducks/users"
 
 const mapStateToProps = state => ({
   isFetching: getIsFetchingUsers(state),
   isFetched: getIsFetchedUsers(state),
-  data: getUsers(state),
+  data: getPage(state),
 })
 
 const mapDispatchToProps = dispatch => ({
