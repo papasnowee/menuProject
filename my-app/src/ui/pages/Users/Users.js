@@ -6,7 +6,9 @@ import UsersList from "../../components/UsersList"
 
 const Users = function({ data, urlParse, limit = 4, location }) {
   const current = urlParse("pageNumber", location)
-  routeRendered({ params: current }) // тут должен располагаться?
+
+  // console.log(current)
+  // routeRendered({ params: current }) // тут должен располагаться?
 
   // последний индекс предыдущей четверки(если limit == 4, если текущая кнопка, например, 5, то вычсляемцй индекс == 4, есди текущая страница 13, то вычисляемый индекс == 12)
   const lastIndexOfPrevStep = Math.floor(current / limit) * limit

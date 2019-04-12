@@ -1,14 +1,14 @@
 import { put, take, select, all } from "redux-saga/effects"
 import { routeRendered } from "../../ducks/router"
 import { routesNormalized } from "../../router"
+import createImmutableSelector from "create-immutable-selector"
 
 function* routerLoadWatcher() {
   try {
     while (true) {
       let {
-        payload: { id, params },
+        payload: { id },
       } = yield take(routeRendered.toString())
-      console.log("params", params)
       let { effects = null } = routesNormalized[id]
       console.log("effects = ", effects)
       while (effects === "extends") {
@@ -20,22 +20,33 @@ function* routerLoadWatcher() {
         }
         effects = routesNormalized[id].effects
       }
+      if (routesNormalized[id].searchParamName) {
+        const searchParamName = routesNormalized[id].searchParamName
+        const getRouteReducerSearch = createImmutableSelector(
+          state => state.getIn(["routerReducer", "location", "search"]),
+          substate => substate
+        )
+        const search = yield select(getRouteReducerSearch)
+        console.log("search", search)
+        const paramsFromUrl = new URLSearchParams(search)
 
-      // если для данной страницы в урл имеется параметр, используя который, делаются запросы к серверу
-      if (params) {
         const map = {}
-        // console.log("effects = ", effects)
-        // селектор будет функцией принимающей параметры, эффект тоже
-        const selectors = yield all(effects.map(({ selector: s }) => select(s(params))))
+        const mapper = p => (map[p] = paramsFromUrl.get(p))
+        const param = Array.isArray(searchParamName)
+          ? searchParamName.forEach(mapper)
+          : paramsFromUrl.get(searchParamName)
+
+        const selectors = yield all(effects.map(({ selector: s }) => select(s(param))))
+        console.log("selectors", selectors)
+        console.log("effects", effects) // есть
         yield all(
           selectors.map((s, i) => {
-            if (!s) return put(effects[i].effect(params))
+            if (!s) return put(effects[i].effect({ param }))
           })
         )
-      }
-
-      if (effects) {
+      } else {
         const selectors = yield all(effects.map(({ selector: s }) => select(s)))
+        console.log("selectors", selectors)
         yield all(
           selectors.map((s, i) => {
             if (!s) return put(effects[i].effect())
@@ -49,35 +60,3 @@ function* routerLoadWatcher() {
 }
 
 export default routerLoadWatcher
-
-// store = {
-//   users: {
-//     pages: {
-//       loadStatusPage1: {
-//         isFetching: false,
-//         isFetched: false,
-//       },
-//       loadStatusPage2: {
-//         isFetching: false,
-//         isFetched: false,
-//       },
-
-//       dataRowsOnPage: {
-//         1: [1, 2, 3],
-//         2: [4, 5, 6],
-//         3: [7, 8, 9],
-//       },
-//     },
-//     data: {
-//       1: "string",
-//       2: "string",
-//       3: "string",
-//       4: "string",
-//       5: "string",
-//       6: "string",
-//       7: "string",
-//       8: "string",
-//       9: "string",
-//     },
-//   },
-// }

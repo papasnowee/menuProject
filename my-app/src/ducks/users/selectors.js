@@ -4,11 +4,14 @@ export const getIsFetchingUsers = createImmutableSelector(
   state => state.getIn(["users", `page${state.param}`, "isFetching"]),
   substate => substate
 )
+//
 
-export const getIsFetchedUsers = createImmutableSelector(
-  state => state.getIn(["users", `page${state.param}`, "isFetched"]),
-  substate => substate
-)
+export const getIsFetchedUsers = param => {
+  return createImmutableSelector(
+    state => state.getIn(["users", `page${param}`, "isFetched"]),
+    substate => substate
+  )
+}
 
 export const getPage = createImmutableSelector(
   state => state.getIn(["users", `page${state.param}`, "data"]),

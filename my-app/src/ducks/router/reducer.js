@@ -4,14 +4,12 @@ import { fromJS } from "immutable"
 
 const initialRouter = fromJS({
   currentRoute: "",
+  params: "",
 })
 
 const router = handleActions(
   {
-    [routeRendered]: (state, { payload: { id, params } }) => {
-      state.set("currentRoute", id).set("params", params)
-      console.log("params = ", params)
-    },
+    [routeRendered]: (state, { payload: { id } }) => state.set("currentRoute", id),
   },
   initialRouter
 )

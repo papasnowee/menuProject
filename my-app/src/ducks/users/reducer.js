@@ -28,19 +28,18 @@ const usersInitial = fromJS({
     arr: [],
   },
 })
-
+// setn для вложенности
 //reducer
 const users = handleActions(
   {
     // action-creators
-    [getUsersRequest]: (state, { payload: { params } }) =>
-      state.set(`page${params}`, "isFetching", true),
-
-    [getUsersSuccess]: (state, { payload: { data, params } }) =>
+    [getUsersRequest]: (state, { payload: { param } }) =>
+      state.set(`page${param}`, "isFetching", true),
+    [getUsersSuccess]: (state, { payload: { data, param } }) =>
       state
-        .set(`page${params}`, "isFetching", false)
-        .set(`page${params}`, "isFetched", true)
-        .set(`page${params}`, fromJS({ data: fromJS(data) })),
+        .set(`page${param}`, "isFetching", false)
+        .set(`page${param}`, "isFetched", true)
+        .set(`page${param}`, fromJS({ data: fromJS(data) })),
 
     [getUsersFailure]: (state, action) =>
       state

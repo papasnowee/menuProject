@@ -1,6 +1,7 @@
 import Users from "./Users"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
+import { routeRendered } from "../../../ducks/router"
 import {
   getIsFetchingUsers,
   getIsFetchedUsers,
@@ -18,6 +19,7 @@ const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(
     {
       getUsersRequest,
+      routeRendered,
     },
     dispatch
   ),
