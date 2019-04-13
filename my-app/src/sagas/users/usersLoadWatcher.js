@@ -11,10 +11,10 @@ export function* usersLoadWatcher() {
     } = yield take(getUsersRequest.toString())
     console.log("param", param)
     try {
-      const responce = axios
+      let data
+      yield axios
         .get("https://reqres.in/api/users?page=1")
-        .then(responce => responce)
-      console.log("responce", responce)
+        .then(responce => data = responce)
       // const { data } = yield call(usersApi(param))
 
       console.log(data)
