@@ -1,8 +1,7 @@
 import { put, call, take } from "redux-saga/effects"
 import { getUsersRequest, getUsersSuccess, getUsersFailure } from "../../ducks/users"
 import { usersApi } from "../../api"
-import axios from "axios"
-import { get } from "../../api/base"
+import { normalize, schema } from "normalizr"
 
 export function* usersLoadWatcher() {
   while (true) {
@@ -13,7 +12,11 @@ export function* usersLoadWatcher() {
     try {
       const { data } = yield call(usersApi(param))
 
-      console.log(data.data)
+      const user = new schema.Entity("users")
+      const mySchema = new schema.Array(user)
+      const normalizedData = normalize(data.data, mySchema)
+      console.log(normalizedData)
+
       yield put(getUsersSuccess({ data, param }))
     } catch (error) {
       console.log(error)

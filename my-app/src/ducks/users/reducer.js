@@ -3,33 +3,16 @@ import { getUsersRequest, getUsersSuccess, getUsersFailure } from "./actions"
 import { fromJS } from "immutable"
 
 const usersInitial = fromJS({
-  page1: {
-    isFetching: false,
-    isFetched: false,
-    data: {},
-    arr: [],
-  },
-  page2: {
-    isFetching: false,
-    isFetched: false,
-    data: {},
-    arr: [],
-  },
-  page3: {
-    isFetching: false,
-    isFetched: false,
-    data: {},
-    arr: [],
-  },
-  page4: {
-    isFetching: false,
-    isFetched: false,
-    data: {},
-    arr: [],
+  users: {
+    pages: {
+      1: { userId: [] },
+    },
+    userList: {
+      1: {},
+    },
   },
 })
-// setn для вложенности
-//reducer
+
 const users = handleActions(
   {
     // action-creators

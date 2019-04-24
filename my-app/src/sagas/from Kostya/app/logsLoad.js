@@ -1,12 +1,12 @@
-import { put, call, takeEvery, take, select } from 'redux-saga/effects'
+import { put, call, take, select } from "redux-saga/effects"
 import {
   getLogsRequest,
   getLogsSuccess,
   getLogsFailure,
   getLogsUpdate,
-} from '../../ducks/app/logs'
-import { getSessionId } from '../../ducks/user'
-import { logsAPI } from '../../api'
+} from "../../ducks/app/logs"
+import { getSessionId } from "../../ducks/user"
+import { logsAPI } from "../../api"
 
 function* logsLoadWatcher() {
   while (true) {

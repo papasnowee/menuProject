@@ -1,4 +1,4 @@
-import { createActions } from 'redux-actions'
+import { createActions } from "redux-actions"
 
 export const { getUsersRequest, getUsersSuccess, getUsersFailure } = createActions({
   GET_USERS_REQUEST: null,

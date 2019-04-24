@@ -1,7 +1,6 @@
 import { put, take, select, all } from "redux-saga/effects"
-import { routeRendered } from "../../ducks/router"
+import { routeRendered, getRouteReducerSearch } from "../../ducks/router"
 import { routesNormalized } from "../../router"
-import createImmutableSelector from "create-immutable-selector"
 
 function* routerLoadWatcher() {
   try {
@@ -22,10 +21,7 @@ function* routerLoadWatcher() {
       }
       if (routesNormalized[id].searchParamName) {
         const searchParamName = routesNormalized[id].searchParamName
-        const getRouteReducerSearch = createImmutableSelector(
-          state => state.getIn(["routerReducer", "location", "search"]),
-          substate => substate
-        )
+
         const search = yield select(getRouteReducerSearch)
         console.log("search", search)
         const paramsFromUrl = new URLSearchParams(search)
@@ -34,7 +30,7 @@ function* routerLoadWatcher() {
         const mapper = p => (map[p] = paramsFromUrl.get(p))
         const param = Array.isArray(searchParamName)
           ? searchParamName.forEach(mapper)
-          : paramsFromUrl.get(searchParamName)
+          : paramsFromUrl.get(searchParamName) // получаем из урл параметр по имени
 
         const selectors = yield all(effects.map(({ selector: s }) => select(s(param))))
         console.log("selectors", selectors)
@@ -60,5 +56,3 @@ function* routerLoadWatcher() {
 }
 
 export default routerLoadWatcher
-
-
