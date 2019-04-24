@@ -6,15 +6,16 @@ import { Provider } from "react-redux"
 import store from "./store"
 import { history } from "./router"
 import { ConnectedRouter } from "react-router-redux"
-/**
- * TODO: 1)
- * сделать ducks(selectors, actions, reducer),
- * вызов апи  users и albums через redux-saga,
- * верстку под компоненты
- *
- * https://jsonplaceholder.typicode.com/albums
- * https://jsonplaceholder.typicode.com/users
- */
+
+// import { Map, List } from "immutable"
+
+// const a = { a: "aa", b: "bb", c: "cc" }
+// const b = ["a", "b", "c"]
+// const bb = List(b)
+// const aa = Map(a)
+// console.log("b List entrySeq =", bb.entrySeq().toJS())
+// console.log("a Map entrySeq =", aa.entrySeq().toJS())
+// console.log("skip 2", bb.take(1))
 
 ReactDOM.render(
   <Provider store={store}>
