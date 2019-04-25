@@ -23,14 +23,15 @@ const users = handleActions(
         .setIn(["pages", param, "isFetching"], false)
         .setIn(["pages", param, "isFetched"], true)
       const userList = {}
+      console.log("data", data.data)
       data.data.forEach(user => {
+        console.log()
         // вместо [{id: 1, name: ...}, {id: 2, name:...}] ---> {1: {id: 1, name:...}, 2: {id: 2, name: ...}}
-        userlist[user.id] = user
+        userList[user.id] = user
       })
       console.log("userList", userList)
-      console.log(123123123)
-      return state
-      // return state.mergeIn(["userList"], fromJS(userList))
+      // return state
+      return state.mergeIn(["userList"], fromJS(userList))
     },
     [getUsersFailure]: (state, action) =>
       state
