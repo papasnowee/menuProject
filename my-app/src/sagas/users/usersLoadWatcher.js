@@ -15,7 +15,7 @@ export function* usersLoadWatcher() {
       const user = new schema.Entity("users")
       const mySchema = new schema.Array(user)
       const normalizedData = normalize(data.data, mySchema)
-      console.log(normalizedData)
+      console.log("normaliz", normalizedData)
 
       yield put(getUsersSuccess({ data, param }))
     } catch (error) {
