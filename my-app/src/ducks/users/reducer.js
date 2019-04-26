@@ -19,19 +19,15 @@ const users = handleActions(
       return state.setIn(["pages", param, "isFetching"], true)
     },
     [getUsersSuccess]: (state, { payload: { data, param } }) => {
-      state
-        .setIn(["pages", param, "isFetching"], false)
-        .setIn(["pages", param, "isFetched"], true)
       const userList = {}
-      console.log("data", data.data)
       data.data.forEach(user => {
-        console.log()
-        // вместо [{id: 1, name: ...}, {id: 2, name:...}] ---> {1: {id: 1, name:...}, 2: {id: 2, name: ...}}
+        // вместо [{id: 1, name: ...}, {id: 2, name:...}] ---> {1: {id: 1, name:...}, 2: {id: 2, name: ...}} что бы в дальнейшем быстро получать нужного пользователя по айди
         userList[user.id] = user
       })
-      console.log("userList", userList)
-      // return state
-      return state.mergeIn(["userList"], fromJS(userList))
+      return state
+        .setIn(["pages", param, "isFetching"], false)
+        .setIn(["pages", param, "isFetched"], true)
+        .mergeIn(["userList"], fromJS(userList))
     },
     [getUsersFailure]: (state, action) =>
       state

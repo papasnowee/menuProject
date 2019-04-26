@@ -19,7 +19,6 @@ const routes = [
     component: About,
     routePath: "/about",
     linkPath: "/about",
-    isNav: true,
     routes: [
       {
         id: "0-0",
@@ -42,7 +41,6 @@ const routes = [
     linkPath: "/albums",
     routePath: "/albums",
     effects: [loadAlbums],
-    isNav: true,
     routes: [
       {
         id: "1-0",

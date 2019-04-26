@@ -1,10 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { withUrlParser } from "../../../router/withUrlParser"
-import { routeRendered } from "../../../ducks/router"
 import UsersList from "../../components/UsersList"
+import Preloader from "../../components/Preloader"
 
-const Users = function({ data, urlParse, limit = 4, location }) {
+const Users = function({
+  data,
+  urlParse,
+  limit = 4,
+  usersNumberAtPage = 3,
+  isFetching,
+  location,
+}) {
   const current = urlParse("pageNumber", location)
 
   // console.log(current)
@@ -28,13 +35,16 @@ const Users = function({ data, urlParse, limit = 4, location }) {
       </Link>
     )
   }
+  console.log("isFetching", isFetching)
+  if (isFetching) return <Preloader />
+
   return (
     <>
       <UsersList data={data} />
       {/* <Previous /> */}
       {links}
       <h1>{`данные страницы №${current}:`}</h1>
-      {/* <div>{JSON.stringify(data.data[pageNumb])}</div> */}
+      <div>{JSON.stringify(data)}</div>
     </>
   )
 }
