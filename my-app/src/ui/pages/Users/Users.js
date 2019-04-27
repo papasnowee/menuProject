@@ -11,9 +11,8 @@ const Users = function({
   usersNumberAtPage = 3,
   isFetching,
   location,
+  current,
 }) {
-  const current = urlParse("pageNumber", location)
-
   // console.log(current)
   // routeRendered({ params: current }) // тут должен располагаться?
 
