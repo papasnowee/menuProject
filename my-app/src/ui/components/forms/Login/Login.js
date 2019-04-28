@@ -39,7 +39,7 @@ export default class Login extends PureComponent {
 
   render() {
     const { password, login } = this.state
-
+    console.log("renderrrrr111111")
     const textFieldProps = {
       onChange: this.handleChange,
       fullWidth: true,

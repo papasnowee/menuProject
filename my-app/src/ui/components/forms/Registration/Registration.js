@@ -1,23 +1,23 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { Paper, TextField, Button } from '@material-ui/core'
-import Radio from '@material-ui/core/Radio'
-import CountrySelect from './CountrySelect'
-import BirthdayDate from '../../DatePicker'
+import React, { PureComponent } from "react"
+import PropTypes from "prop-types"
+import { Paper, TextField, Button } from "@material-ui/core"
+import Radio from "@material-ui/core/Radio"
+import CountrySelect from "./CountrySelect"
+import BirthdayDate from "../../DatePicker"
 
-import './Registration.css'
+import "./Registration.css"
 
 export default class Registration extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
-      login: '',
-      password: '',
-      passwordAgain: '',
-      gender: '',
-      email: '',
-      select: { countrys: [], birthday: '' },
+      login: "",
+      password: "",
+      passwordAgain: "",
+      gender: "",
+      email: "",
+      select: { countrys: [], birthday: "" },
       datePicker: new Date(),
     }
 
@@ -40,13 +40,9 @@ export default class Registration extends PureComponent {
 
     e.preventDefault()
 
-    const getIsNotEmpty = v => v !== ''
+    const getIsNotEmpty = v => v !== ""
 
-    if (
-      getIsNotEmpty(login) &&
-      getIsNotEmpty(password) &&
-      password === passwordAgain
-    ) {
+    if (getIsNotEmpty(login) && getIsNotEmpty(password) && password === passwordAgain) {
       onLogin({ login, password })
     }
   }
@@ -69,10 +65,9 @@ export default class Registration extends PureComponent {
     const textFieldProps = {
       onChange: this.handleChange,
       fullWidth: true,
-      margin: 'normal',
+      margin: "normal",
       required: true,
     }
-
     return (
       <div className="auth-form">
         <Paper className="auth-form__paper">
@@ -109,7 +104,7 @@ export default class Registration extends PureComponent {
               Пол
               <div className="registration__row">
                 <Radio
-                  checked={gender === 'male'}
+                  checked={gender === "male"}
                   onChange={this.handleChangeGender}
                   value="male"
                   name="gender"
@@ -119,7 +114,7 @@ export default class Registration extends PureComponent {
               </div>
               <div className="registration__row">
                 <Radio
-                  checked={gender === 'female'}
+                  checked={gender === "female"}
                   onChange={this.handleChangeGender}
                   value="female"
                   name="gender"
@@ -129,11 +124,7 @@ export default class Registration extends PureComponent {
               </div>
             </div>
             <div className="auth-form__button">
-              <CountrySelect
-                onChange={this.handleChange}
-                value={null}
-                select={select}
-              />
+              <CountrySelect onChange={this.handleChange} value={null} select={select} />
               <BirthdayDate
                 onChange={this.handleChange}
                 name="datePicker"

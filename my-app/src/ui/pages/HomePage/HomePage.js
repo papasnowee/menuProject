@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom"
 import routes from "../../../router"
 import { fromJS } from "immutable"
 import MenuComponent from "../../components/Menu"
+import { createStructuredSelector } from "reselect"
 
 class HomePage extends React.Component {
   constructor(props) {
