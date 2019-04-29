@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux"
 import {
   getIsFetchingUsers,
   getIsFetchedUsers,
-  getUsers,
+  // getUsers,
   // getUsersRequest,
 } from "../../../ducks/users"
 import { getRouteReducerSearch } from "../../../ducks/router"
