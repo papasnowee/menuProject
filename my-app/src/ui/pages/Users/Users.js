@@ -48,24 +48,27 @@ import Preloader from "../../components/Preloader"
 //   )
 // }
 
+let objjjj = { value: 12 }
+
 class Users extends React.Component {
   state = {
-    value: { value: 0 },
+    value: 1,
   }
 
   render() {
     console.log("render Users")
 
+    console.log(this.props.users === objjjj)
+    objjjj = this.props.users
+    const { getUsersRequest } = this.props
     return (
       <div>
         Component Users!
         <UsersList value={this.state.value} />
         <button
-          onClick={() => {
-            console.log(this.state.value)
-            this.setState(prevState => {
-              return { value: { value: prevState.value.value } }
-            })
+          onClick={e => {
+            getUsersRequest(objjjj)
+            e.preventDefault()
           }}
         />
       </div>
