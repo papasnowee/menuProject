@@ -3,7 +3,7 @@ import { onLogin } from "./actions"
 import { fromJS } from "immutable"
 
 const loginInitial = fromJS({
-  isAuth: false,
+  isAuth: true,
 })
 
 //reducer

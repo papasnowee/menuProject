@@ -47,12 +47,12 @@ import Preloader from "../../components/Preloader"
 //     </>
 //   )
 // }
-
+let st = { ar: 123 }
 class Users extends React.Component {
   state = {
-    value: { value: 0 },
+    value: { value: st },
+    name: "Alex",
   }
-
   render() {
     console.log("render Users")
 
@@ -62,9 +62,11 @@ class Users extends React.Component {
         <UsersList value={this.state.value} />
         <button
           onClick={() => {
-            console.log(this.state.value)
             this.setState(prevState => {
-              return { value: { value: prevState.value.value } }
+              console.log("value = value?", prevState.value.value === st)
+              console.log("prevState.value.value", prevState.value.value)
+              console.log("st =", st)
+              return { ...prevState, name: prevState.name + "." }
             })
           }}
         />
