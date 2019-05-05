@@ -47,20 +47,33 @@ import Preloader from "../../components/Preloader"
 //     </>
 //   )
 // }
+<<<<<<< HEAD
 let st = { ar: 123 }
 class Users extends React.Component {
   state = {
     value: { value: st },
     name: "Alex",
+=======
+
+let objjjj = { value: 12 }
+
+class Users extends React.Component {
+  state = {
+    value: 1,
+>>>>>>> a2c5064067062391dd8cd28098ac115788b6e449
   }
   render() {
     console.log("render Users")
 
+    console.log(this.props.users === objjjj)
+    objjjj = this.props.users
+    const { getUsersRequest } = this.props
     return (
       <div>
         Component Users!
         <UsersList value={this.state.value} />
         <button
+<<<<<<< HEAD
           onClick={() => {
             this.setState(prevState => {
               console.log("value = value?", prevState.value.value === st)
@@ -68,6 +81,11 @@ class Users extends React.Component {
               console.log("st =", st)
               return { ...prevState, name: prevState.name + "." }
             })
+=======
+          onClick={e => {
+            getUsersRequest(objjjj)
+            e.preventDefault()
+>>>>>>> a2c5064067062391dd8cd28098ac115788b6e449
           }}
         />
       </div>

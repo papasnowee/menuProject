@@ -5,9 +5,9 @@ import { normalize, schema } from "normalizr"
 
 export function* usersLoadWatcher() {
   while (true) {
-    const {
-      payload: { param },
-    } = yield take(getUsersRequest.toString())
+    // const {
+    //   payload: { param },
+    // } = yield take(getUsersRequest.toString())
     console.log("param", param)
     try {
       const { data } = yield call(usersApi(param))
