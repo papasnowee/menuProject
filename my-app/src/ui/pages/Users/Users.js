@@ -47,6 +47,10 @@ import Preloader from "../../components/Preloader"
 //     </>
 //   )
 // }
+let bigData = {}
+for (let i = 0; i < 1000000; i++) {
+  bigData[i] = i
+}
 let st = { ar: 123 }
 class Users extends React.Component {
   state = {
@@ -68,7 +72,7 @@ class Users extends React.Component {
               console.log("value = value?", prevState.value.value === st)
               console.log("prevState.value.value", prevState.value.value)
               console.log("st =", st)
-              return { ...prevState, value: {value: }}
+              return { ...prevState, value: { value: 6 } }
             })
           }}
         />
