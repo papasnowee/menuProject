@@ -47,8 +47,5 @@ const Users = function({
     </>
   )
 }
-let bigData = {}
-for (let i = 0; i < 1000000; i++) {
-  bigData[i] = i
-}
-let st = { ar: 123 }
+
+export default withUrlParser(Users)
