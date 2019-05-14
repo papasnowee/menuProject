@@ -61,6 +61,7 @@
     "redux-saga": "^0.16.2",
     "reselect": "^4.0.0",
     "smart-grid": "^2.1.2",
+    "styled-components": "^4.2.0",
     "url-search-params-polyfill": "^5.0.0",
     "uuid": "^3.3.2"
   },

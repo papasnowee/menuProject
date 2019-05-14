@@ -3,6 +3,19 @@ import { Link } from "react-router-dom"
 import { withUrlParser } from "../../../router/withUrlParser"
 import UsersList from "../../components/UsersList"
 import Preloader from "../../components/Preloader"
+import styled from "styled-components"
+
+const StyledDiv = styled.div`
+  font-size: 5.5em;
+  text-align: center;
+  color: palevioletred;
+`
+
+const Span = styled(StyledDiv)`
+  font-size: 1.5em;
+`
+
+const h1 = StyledDiv.extend
 
 const Users = function({
   data,
@@ -34,16 +47,16 @@ const Users = function({
       </Link>
     )
   }
-  console.log("isFetching", isFetching)
-  // if (isFetching) return <Preloader />
+  if (isFetching) return <Preloader />
 
   return (
     <>
       <UsersList data={data} />
-
       {links}
       <h1>{`данные страницы №${current}:`}</h1>
       <div>{JSON.stringify(data)}</div>
+      <StyledDiv as="button">asdf</StyledDiv>
+      <Span>spaaaan</Span>
     </>
   )
 }
